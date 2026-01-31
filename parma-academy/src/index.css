@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: #0f172a;
+  background-color: #f8fafc;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f8fafc;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+html.dark body {
+  background-color: #0b1120;
+  color: #e2e8f0;
+}
+
+html.dark .bg-white {
+  background-color: #0f172a;
+}
+
+html.dark .bg-slate-50 {
+  background-color: #0b1120;
+}
+
+html.dark .bg-emerald-50 {
+  background-color: #053a2b;
+}
+
+html.dark .bg-amber-50 {
+  background-color: #3a240d;
+}
+
+html.dark .text-slate-900 {
+  color: #f8fafc;
+}
+
+html.dark .text-slate-700 {
+  color: #e2e8f0;
+}
+
+html.dark .text-slate-600 {
+  color: #cbd5e1;
+}
+
+html.dark .text-slate-500 {
+  color: #94a3b8;
+}
+
+html.dark .border-slate-200 {
+  border-color: #1f2937;
+}
+
+html.dark .text-emerald-900 {
+  color: #d1fae5;
+}
+
+html.dark .text-emerald-900\/80 {
+  color: rgba(209, 250, 229, 0.8);
+}
+
+html.dark .text-amber-900 {
+  color: #fde68a;
+}
+
+html.dark .text-amber-900\/80 {
+  color: rgba(253, 230, 138, 0.8);
+}
