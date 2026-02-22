@@ -1,71 +1,87 @@
+import admissionContest from '../assets/Admissioncontest.jpeg'
+import holi2025 from '../assets/Holi2025-1.jpeg'
+import independence2025One from '../assets/Independence2025-1.jpeg'
+import independence2025Two from '../assets/Independence2025-2.jpeg'
+import independence2025Three from '../assets/Independence2025-3.jpeg'
+import independence2025Four from '../assets/Independence2025-4.jpeg'
+import janmashtami2025 from '../assets/Janmasthami2025-1.jpeg'
+import juniorWingTourOne from '../assets/Juniorwingtour2026-1.jpeg'
+import juniorWingTourTwo from '../assets/Juniorwingtour2026-2.jpeg'
+import juniorWingTourThree from '../assets/Juniorwingtour2026-3.jpeg'
+import juniorWingTourFour from '../assets/Juniorwingtour2026-4.jpeg'
+import juniorWingTourFive from '../assets/Juniorwingtour2026-5.jpeg'
+import rakshabandhan2025 from '../assets/Rakshabandhan-2025.jpeg'
+import rangoli2025 from '../assets/Rangolicompetition2025-1.jpeg'
+import seniorWingTourOne from '../assets/Seniourwingtour2025-1.jpeg'
+import seniorWingTourTwo from '../assets/Seniourwingtour2025-2.jpeg'
+import seniorWingTourThree from '../assets/Seniourwingtour2025-3.jpeg'
+
 const events = [
   {
-    date: '2022-07-04',
-    title: 'Diwali',
+    date: '2026-01-10',
+    title: 'Junior Wing Tour 2026',
     description:
-      "Diwali is India's biggest and most important holiday of the year. The festival symbolizes the inner light that protects from spiritual darkness.",
-    images: 4,
+      'A joyful educational tour for our junior wing, filled with exploration and learning.',
+    images: [
+      juniorWingTourOne,
+      juniorWingTourTwo,
+      juniorWingTourThree,
+      juniorWingTourFour,
+      juniorWingTourFive,
+    ],
   },
   {
-    date: '2022-07-22',
-    title: 'Christmas',
+    date: '2025-12-05',
+    title: 'Senior Wing Tour 2025',
     description:
-      'Christmas is celebrated with joy, music, and lights, bringing together students, parents, and staff for a warm community gathering.',
-    images: 1,
+      'Senior students explored historical and cultural landmarks together.',
+    images: [seniorWingTourOne, seniorWingTourTwo, seniorWingTourThree],
   },
   {
-    date: '2022-07-03',
-    title: 'Holi',
+    date: '2025-11-02',
+    title: 'Rangoli Competition 2025',
     description:
-      'Also known as the festival of colours, Holi is celebrated with vibrant hues, music, and joyful togetherness.',
-    images: 0,
+      'Creative rangoli artistry celebrating festivals and traditions.',
+    images: [rangoli2025],
   },
   {
-    date: '2022-06-26',
-    title: 'Raksha Bandhan',
-    description:
-      'Signifying the brother-sister bond, Raksha Bandhan includes aarti, tilak, and a promise of protection and care.',
-    images: 0,
-  },
-  {
-    date: '2023-05-10',
-    title: 'Admission Contest',
+    date: '2025-10-12',
+    title: 'Admission Contest 2025',
     description: 'Knowledge is the coolest money.',
-    images: 1,
+    images: [admissionContest],
   },
   {
-    date: '2023-08-15',
-    title: 'Independence Day 2023',
-    description:
-      'The Parma Pyramid shows the undeniable strength of new India. Jai Hind.',
-    images: 1,
-  },
-  {
-    date: '',
-    title: 'Shree Krishna Janmashtmi',
-    description:
-      "Little hearts dressed up as Shree Krishna and enjoyed the Dahi Handi ceremony. Here are a few glimpses.",
-    images: 3,
-  },
-  {
-    date: '2025-08-18',
-    title: 'Independence Day - 2025',
+    date: '2025-08-15',
+    title: 'Independence Day 2025',
     description: 'The glorious celebration of Independence Day.',
-    images: 4,
+    images: [
+      independence2025One,
+      independence2025Two,
+      independence2025Three,
+      independence2025Four,
+    ],
+  },
+  {
+    date: '2025-08-19',
+    title: 'Raksha Bandhan 2025',
+    description:
+      'Celebrating the bond of care and protection with traditional rituals.',
+    images: [rakshabandhan2025],
+  },
+  {
+    date: '2025-08-26',
+    title: 'Shree Krishna Janmashtami 2025',
+    description:
+      "Little hearts dressed up as Shree Krishna and enjoyed the Dahi Handi ceremony.",
+    images: [janmashtami2025],
+  },
+  {
+    date: '2025-03-14',
+    title: 'Holi 2025',
+    description: 'Festival of colours celebrated with joy, music, and laughter.',
+    images: [holi2025],
   },
 ]
-
-const renderPlaceholders = (count) => {
-  if (!count) return null
-  return Array.from({ length: count }, (_, index) => (
-    <div
-      key={`photo-${count}-${index}`}
-      className="flex h-32 items-center justify-center rounded-xl border border-dashed border-slate-200 bg-white text-xs font-semibold text-slate-400"
-    >
-      Photo placeholder
-    </div>
-  ))
-}
 
 function EventsPage() {
   return (
@@ -109,9 +125,20 @@ function EventsPage() {
               <p className="mt-4 text-sm leading-relaxed text-slate-600">
                 {event.description}
               </p>
-              {event.images ? (
+              {event.images?.length ? (
                 <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                  {renderPlaceholders(event.images)}
+                  {event.images.map((image, index) => (
+                    <div
+                      key={`${event.title}-${index}`}
+                      className="overflow-hidden rounded-2xl"
+                    >
+                      <img
+                        className="h-40 w-full object-cover transition duration-300 hover:scale-105 sm:h-44"
+                        src={image}
+                        alt={`${event.title} photo`}
+                      />
+                    </div>
+                  ))}
                 </div>
               ) : null}
             </article>

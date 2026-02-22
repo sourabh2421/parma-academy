@@ -144,7 +144,6 @@ function FeesPage() {
             <div className="mt-6 space-y-3 text-sm text-emerald-900">
               <p>Phone: +91 7007178570, 7905601642</p>
               <p>Email: Parma.academy.2004@gmail.com</p>
-              <p>Primary Branch - Ramghat, Ayodhya - 224123 U.P.</p>
               <p>Secondary Branch - Parikrama Marg, Ayodhya - 224123 U.P.</p>
             </div>
           </div>

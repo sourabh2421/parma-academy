@@ -11,6 +11,7 @@ import EmployeePage from './innercomponents/EmployeePage.jsx'
 import StaffPage from './innercomponents/StaffPage.jsx'
 import FeesPage from './innercomponents/FeesPage.jsx'
 import ContactPage from './innercomponents/ContactPage.jsx'
+import GalleryPage from './innercomponents/GalleryPage.jsx'
 
 const routes = {
   '/': HomePage,
@@ -22,6 +23,7 @@ const routes = {
   '/staff': StaffPage,
   '/fees': FeesPage,
   '/contact': ContactPage,
+  '/gallery': GalleryPage,
 }
 
 const getRouteFromHash = () => {

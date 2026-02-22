@@ -1,5 +1,6 @@
 function Inquiry() {
-  return (
+  return null
+  /*
     <section id="admission" className="bg-emerald-700 text-white">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
@@ -12,7 +13,6 @@ function Inquiry() {
             about admissions, curriculum, and campus facilities.
           </p>
           <div className="mt-8 space-y-4 text-sm text-emerald-100">
-            <p>Primary Branch - Ramghat, Ayodhya - 224123 U.P.</p>
             <p>Secondary Branch - Parikrama Marg, Ayodhya - 224123 U.P.</p>
             <p>Phone: +91 7007178570, 7905601642</p>
             <p>Email: Parma.academy.2004@gmail.com</p>
@@ -70,7 +70,7 @@ function Inquiry() {
         </form>
       </div>
     </section>
-  )
+    */
 }
 
 export default Inquiry

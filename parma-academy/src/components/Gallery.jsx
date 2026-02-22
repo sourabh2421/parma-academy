@@ -1,11 +1,7 @@
-const galleryImages = [
-  'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80',
-]
+import galleryOne from '../assets/Gallery1.avif'
+import galleryTwo from '../assets/Gallery2.avif'
+import galleryThree from '../assets/Gallery3.avif'
+import galleryWide from '../assets/Galleryelongatedphoto.avif'
 
 function Gallery() {
   return (
@@ -21,22 +17,31 @@ function Gallery() {
             </h2>
           </div>
           <a
-            href="#/"
+            href="#/gallery"
             className="rounded-full border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-700 transition hover:border-emerald-600 hover:text-emerald-700"
           >
             View full gallery
           </a>
         </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {galleryImages.map((image, index) => (
-            <div key={`${image}-${index}`} className="overflow-hidden rounded-2xl">
-              <img
-                className="h-48 w-full object-cover transition duration-300 hover:scale-105"
-                src={image}
-                alt="School gallery"
-              />
-            </div>
-          ))}
+        <div className="mt-8 grid gap-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[galleryOne, galleryTwo, galleryThree].map((image, index) => (
+              <div key={`${image}-${index}`} className="overflow-hidden rounded-2xl">
+                <img
+                  className="h-48 w-full object-cover transition duration-300 hover:scale-105"
+                  src={image}
+                  alt="School gallery"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="overflow-hidden rounded-2xl">
+            <img
+              className="h-56 w-full object-cover transition duration-300 hover:scale-105 sm:h-64"
+              src={galleryWide}
+              alt="School campus"
+            />
+          </div>
         </div>
       </div>
     </section>

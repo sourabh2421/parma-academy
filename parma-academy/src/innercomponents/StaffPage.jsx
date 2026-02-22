@@ -1,81 +1,106 @@
+import shriNarayanRai from '../assets/ShriNarayanRai.jpeg'
+import sudhirRai from '../assets/SudhirRai.jpeg'
+import sunitaRai from '../assets/SunitaRai.jpeg'
+
 const staffGroups = [
   {
     title: 'Management Staff',
-    names: ['Principal - Mrs. Suneeta', 'Managing Director - Shri Narayan Rai'],
+    members: [
+      {
+        name: 'Principal - Mrs. Suneeta',
+        image: sunitaRai,
+      },
+      {
+        name: 'Managing Director - Shri Narayan Rai',
+        image: shriNarayanRai,
+      },
+      {
+        name: 'Dr. Sudhir Rai',
+        image: sudhirRai,
+      },
+    ],
   },
   {
     title: 'Hindi Staff',
-    names: [
-      'Pooja Singh',
-      'Poonam Jaiswal',
-      'Khusboo Gupta',
-      'Indu Chaudhary',
-      'Shreya Shukla',
+    members: [
+      { name: 'Pooja Singh' },
+      { name: 'Poonam Jaiswal' },
+      { name: 'Khusboo Gupta' },
+      { name: 'Indu Chaudhary' },
+      { name: 'Shreya Shukla' },
     ],
   },
   {
     title: 'Maths Staff',
-    names: [
-      'Ajay Kumar',
-      'Utkarsh Mishra',
-      'Rajesh Sharma',
-      'Sanjay Verma',
-      'Rajesh Kumar',
+    members: [
+      { name: 'Ajay Kumar' },
+      { name: 'Utkarsh Mishra' },
+      { name: 'Rajesh Sharma' },
+      { name: 'Sanjay Verma' },
+      { name: 'Rajesh Kumar' },
     ],
   },
   {
     title: 'Science Staff',
-    names: [
-      'Neha Pandey',
-      'Rahul',
-      'Sandhya Tiwari',
-      'Shalini Singh',
-      'Rajesh Yadav',
+    members: [
+      { name: 'Neha Pandey' },
+      { name: 'Rahul' },
+      { name: 'Sandhya Tiwari' },
+      { name: 'Shalini Singh' },
+      { name: 'Rajesh Yadav' },
     ],
   },
   {
     title: 'English Staff',
-    names: [
-      'Sonam',
-      'Sandeep',
-      'Komal Mishra',
-      'Saurabh Singh',
-      'Snchalata',
+    members: [
+      { name: 'Sonam' },
+      { name: 'Sandeep' },
+      { name: 'Komal Mishra' },
+      { name: 'Saurabh Singh' },
+      { name: 'Snchalata' },
     ],
   },
   {
     title: 'S.ST Staff',
-    names: [
-      'Saurabh Nigam',
-      'Utkarsh',
-      'Shikha',
-      'Mani Shankar Ojha',
-      'Rashmi Mishra',
+    members: [
+      { name: 'Saurabh Nigam' },
+      { name: 'Utkarsh' },
+      { name: 'Shikha' },
+      { name: 'Mani Shankar Ojha' },
+      { name: 'Rashmi Mishra' },
     ],
   },
   {
     title: 'Music Staff',
-    names: ['Chavi', 'Divya Sharma', 'Saurabh'],
+    members: [{ name: 'Chavi' }, { name: 'Divya Sharma' }, { name: 'Saurabh' }],
   },
   {
     title: 'Game Staff',
-    names: ['Taran Chawla', 'Ankur Gupta', 'Rajesh Kumar'],
+    members: [
+      { name: 'Taran Chawla' },
+      { name: 'Ankur Gupta' },
+      { name: 'Rajesh Kumar' },
+    ],
   },
   {
     title: 'Computer Staff',
-    names: ['Shikha Pandey', 'Sankalp', 'Shiv Lal Gupta'],
+    members: [
+      { name: 'Shikha Pandey' },
+      { name: 'Sankalp' },
+      { name: 'Shiv Lal Gupta' },
+    ],
   },
   {
     title: 'Library Staff',
-    names: ['Anpurna', 'Pooja', 'Neha Mishra'],
+    members: [{ name: 'Anpurna' }, { name: 'Pooja' }, { name: 'Neha Mishra' }],
   },
   {
     title: 'Counselor Staff',
-    names: ['Dr. Smriti Rai', 'Dr. Pooja',] ,
+    members: [{ name: 'Dr. Smriti Rai' }, { name: 'Dr. Pooja' }],
   },
   {
     title: 'Infirmary Staff',
-    names: ['Pradeep Rai', 'Shreya Singh', ],
+    members: [{ name: 'Pradeep Rai' }, { name: 'Shreya Singh' }],
   },
 ]
 
@@ -108,21 +133,25 @@ function StaffPage() {
                   {group.title}
                 </h2>
                 <div className="text-xs font-semibold uppercase tracking-widest text-emerald-600">
-                  {group.names.length} members
+                  {group.members.length} members
                 </div>
               </div>
               <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {group.names.map((name) => (
+                {group.members.map((member) => (
                   <div
-                    key={name}
+                    key={member.name}
                     className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-dashed border-slate-200 bg-white text-[11px] font-semibold text-slate-500">
-                      Photo
-                    </div>
+                    {member.image ? (
+                      <img
+                        className="h-12 w-12 rounded-full border border-slate-200 bg-white object-cover"
+                        src={member.image}
+                        alt={member.name}
+                      />
+                    ) : null}
                     <div>
                       <p className="text-sm font-semibold text-slate-900">
-                        {name}
+                        {member.name}
                       </p>
                       <p className="text-xs text-slate-500">Parma Academy</p>
                     </div>

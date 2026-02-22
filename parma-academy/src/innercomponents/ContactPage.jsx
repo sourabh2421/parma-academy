@@ -13,7 +13,6 @@ function ContactPage() {
       </p>
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         {[
-          'Primary Branch - Ramghat, Ayodhya - 224123 U.P.',
           'Secondary Branch - Parikrama Marg, Ayodhya - 224123 U.P.',
           'Phone: +91 7007178570, 7905601642',
           'Email: Parma.academy.2004@gmail.com',

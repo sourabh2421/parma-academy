@@ -1,7 +1,9 @@
+import heroImage from '../assets/Heroimageparmaacademy.jpeg'
+
 const quickFacts = [
   { label: 'Established', value: '2004' },
   { label: 'Students', value: '1,200+' },
-  { label: 'Faculty', value: '85+' },
+  { label: 'Faculty', value: '50+' },
 ]
 
 function Hero() {
@@ -53,7 +55,7 @@ function Hero() {
           <div className="absolute -bottom-10 -right-6 h-24 w-24 rounded-full bg-amber-100" />
           <img
             className="relative z-10 w-full rounded-3xl object-cover shadow-xl"
-            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
+            src={heroImage}
             alt="Students in classroom"
           />
         </div>

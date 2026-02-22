@@ -1,3 +1,6 @@
+import infraImage from '../assets/infraimage1.jpeg'
+import infraImageTwo from '../assets/infraimage2jpeg.jpeg'
+
 const infrastructure = [
   'Spacious classrooms',
   'Proper ventilation facilities',
@@ -19,11 +22,18 @@ function Infrastructure() {
         </div>
       </div>
       <div className="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-        <img
-          className="h-full w-full rounded-3xl object-cover shadow-lg"
-          src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80"
-          alt="School infrastructure"
-        />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+          <img
+            className="h-56 w-full rounded-3xl object-cover shadow-lg sm:h-64 lg:h-56"
+            src={infraImage}
+            alt="Parma Academy building"
+          />
+          <img
+            className="h-56 w-full rounded-3xl object-cover shadow-lg sm:h-64 lg:h-56"
+            src={infraImageTwo}
+            alt="Parma Academy classroom"
+          />
+        </div>
         <div className="grid gap-4">
           {infrastructure.map((item) => (
             <div

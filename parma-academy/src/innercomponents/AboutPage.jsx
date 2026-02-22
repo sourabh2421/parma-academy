@@ -1,52 +1,66 @@
+import shriNarayanRai from '../assets/ShriNarayanRai.jpeg'
+import sudhirRai from '../assets/SudhirRai.jpeg'
+import sunitaRai from '../assets/SunitaRai.jpeg'
+import harishChandraRai from '../assets/HarishChandraRai.jpeg'
+import ashokRai from '../assets/AshokRai.jpeg'
+import rpRai from '../assets/R.Prai.jpeg'
+import shekharRai from '../assets/ShekharRai.jpeg'
+
 const testimonials = [
   {
     name: 'Mrs. Suneeta',
     role: 'Principal',
     quote:
       'We strongly believe in educating children as opposed to just schooling them. We believe home and school must work in unison and a positive partnership with parents play a vital role.',
+    image: sunitaRai,
   },
   {
     name: 'Shri Narayan Rai',
     role: 'Managing Director',
     quote:
       "We are deeply committed to impart quality education of global standards, so that our students are able to deal with life's everyday challenges.",
+    image: shriNarayanRai,
   },
   {
     name: 'Dr. Sudhir Rai',
     role: 'Professor, Saket PG College',
     quote:
       "Come join us to see the world through a new perspective. Join us and see how co-operation and competition frames your child into tomorrow's responsible citizen.",
+    image: sudhirRai,
   },
   {
     name: 'Harish Chandra',
     role: 'Principal, GSSS, A&N',
     quote:
       'A plethora of academic and co-curricular activities offer the opportunity to all students to discover and enhance various facets of their personality.',
+    image: harishChandraRai,
   },
   {
     name: 'Ashok Rai',
     role: 'Advocate, FZD',
     quote:
       'We strive to make the school experience safe, secure, purposeful and fun. The stress free and motivating environment creates the right ambience.',
+    image: ashokRai,
   },
   {
     name: 'Rajendra Prasad',
     role: 'Dogra Regiment, FZD',
     quote:
       'We strongly believe home and school must work in unison and a positive partnership with parents play a vital role.',
+    image: rpRai,
   },
   {
     name: 'Shekhar Rai',
     role: 'BDO, A&N',
     quote:
       "Our vision is to become an institution where learning is a joy. Our mission is to prepare responsible citizens for the prosperity and well-being of our society.",
+    image: shekharRai,
   },
 ]
 
 const contactCards = [
   'Email: Parma.academy.2004@gmail.com',
   'Phone: +91 7007178570, 7905601642',
-  'Primary Branch - Parma Academy Ramghat, Ayodhya - 224123 U.P.',
   'Secondary Branch - Parma Academy Parikrama Marg, Parmapuram, Ayodhya - 224123 U.P.',
 ]
 
@@ -93,9 +107,17 @@ function AboutPage() {
                 className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm"
               >
                 <div className="flex flex-wrap items-start gap-4">
-                  <div className="flex h-20 w-20 items-center justify-center rounded-full border border-dashed border-slate-200 bg-white text-[11px] font-semibold text-slate-500">
-                    Photo
-                  </div>
+                  {item.image ? (
+                    <img
+                      className="h-20 w-20 rounded-full border border-slate-200 bg-white object-cover"
+                      src={item.image}
+                      alt={item.name}
+                    />
+                  ) : (
+                    <div className="flex h-20 w-20 items-center justify-center rounded-full border border-dashed border-slate-200 bg-white text-[11px] font-semibold text-slate-500">
+                      Photo
+                    </div>
+                  )}
                   <div className="flex-1">
                     <p className="text-base text-slate-700">"{item.quote}"</p>
                     <div className="mt-6">

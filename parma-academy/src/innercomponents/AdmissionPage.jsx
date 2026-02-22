@@ -1,4 +1,29 @@
+import { useRef } from 'react'
+import emailjs from '@emailjs/browser'
+
 function AdmissionPage() {
+  const form = useRef()
+
+  const sendEmail = (e) => {
+    e.preventDefault()
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAIL_SERVICE_ID,
+        import.meta.env.VITE_ADMISSION_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_EMAIL_PUBLIC_KEY,
+      )
+      .then(() => {
+        alert('Admission form submitted successfully!')
+        e.target.reset()
+      })
+      .catch((error) => {
+        console.error(error)
+        alert('Failed to submit form.')
+      })
+  }
+
   return (
     <section className="mx-auto max-w-6xl px-6 py-16">
       <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
@@ -20,7 +45,11 @@ function AdmissionPage() {
           </div>
         </div>
 
-        <form className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <form
+          ref={form}
+          onSubmit={sendEmail}
+          className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+        >
           <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600">
             Student Admission Form
           </p>
@@ -35,6 +64,7 @@ function AdmissionPage() {
               <input
                 className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
                 type="text"
+                name="student_name"
                 placeholder="Student full name"
               />
             </div>
@@ -45,13 +75,17 @@ function AdmissionPage() {
               <input
                 className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
                 type="date"
+                name="dob"
               />
             </div>
             <div>
               <label className="text-xs font-semibold uppercase tracking-widest text-slate-500">
                 Grade Applying For
               </label>
-              <select className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none">
+              <select
+                name="grade"
+                className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
+              >
                 <option>Pre-School</option>
                 <option>Grade 1</option>
                 <option>Grade 2</option>
@@ -74,6 +108,7 @@ function AdmissionPage() {
               <input
                 className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
                 type="text"
+                name="previous_school"
                 placeholder="Current/previous school"
               />
             </div>
@@ -85,6 +120,7 @@ function AdmissionPage() {
             <input
               className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
               type="text"
+              name="parent_name"
               placeholder="Parent or guardian name"
             />
           </div>
@@ -96,6 +132,7 @@ function AdmissionPage() {
               <input
                 className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
                 type="tel"
+                name="phone"
                 placeholder="+91 00000 00000"
               />
             </div>
@@ -106,6 +143,7 @@ function AdmissionPage() {
               <input
                 className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
                 type="email"
+                name="email"
                 placeholder="parent@email.com"
               />
             </div>
@@ -117,6 +155,7 @@ function AdmissionPage() {
             <textarea
               className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
               rows="4"
+              name="message"
               placeholder="Tell us about the student"
             />
           </div>
