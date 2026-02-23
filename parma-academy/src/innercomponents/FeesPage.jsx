@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async'
+import { seoConfig } from '../seo/seoConfig.js'
 import gpayImage from '../assets/gpay.webp'
 import pnbImage from '../assets/pnb.webp'
 import sbiImage from '../assets/sbi.webp'
@@ -55,6 +57,7 @@ const instructions = [
 ]
 
 function FeesPage() {
+  const canonicalUrl = `${seoConfig.siteUrl}/fees`
   const handleCopy = async (value) => {
     if (!value) return
     try {
@@ -66,6 +69,22 @@ function FeesPage() {
 
   return (
     <main className="bg-slate-50 text-slate-900">
+      <Helmet>
+        <title>Fees Payment | {seoConfig.schoolName} Ayodhya</title>
+        <meta
+          name="description"
+          content="Pay school fees securely for Parma Academy, an ICSE school in Ayodhya. Review UPI and bank payment instructions."
+        />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={`Fees Payment | ${seoConfig.schoolName}`} />
+        <meta
+          property="og:description"
+          content="Fee payment details for Parma Academy, an ICSE affiliated school in Ayodhya."
+        />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <section className="mx-auto max-w-6xl px-6 py-16">
         <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">
           Fees Payment
@@ -108,7 +127,8 @@ function FeesPage() {
                 <img
                   className="h-96 w-full object-contain p-4"
                   src={option.image}
-                  alt={`${option.title} payment details`}
+                  alt={`${option.title} fees payment for ICSE school in Ayodhya`}
+                  loading="lazy"
                 />
               </div>
             </article>

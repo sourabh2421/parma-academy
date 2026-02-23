@@ -1,6 +1,27 @@
+import { Helmet } from 'react-helmet-async'
+import { seoConfig } from '../seo/seoConfig.js'
+
 function StudentPage() {
+  const canonicalUrl = `${seoConfig.siteUrl}/student`
+
   return (
     <section className="mx-auto max-w-4xl px-6 py-16">
+      <Helmet>
+        <title>Student Life | {seoConfig.schoolName} Ayodhya</title>
+        <meta
+          name="description"
+          content="Student life at Parma Academy, an ICSE school in Ayodhya, includes clubs, sports, mentoring, and holistic development."
+        />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={`Student Life | ${seoConfig.schoolName}`} />
+        <meta
+          property="og:description"
+          content="Student life at Parma Academy, an ICSE affiliated school in Ayodhya."
+        />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">
         Student
       </p>

@@ -1,3 +1,6 @@
+import { Helmet } from 'react-helmet-async'
+import { Link } from 'react-router-dom'
+import { seoConfig } from '../seo/seoConfig.js'
 import shriNarayanRai from '../assets/ShriNarayanRai.jpeg'
 import sudhirRai from '../assets/SudhirRai.jpeg'
 import sunitaRai from '../assets/SunitaRai.jpeg'
@@ -65,8 +68,26 @@ const contactCards = [
 ]
 
 function AboutPage() {
+  const canonicalUrl = `${seoConfig.siteUrl}/about`
+
   return (
     <main className="bg-slate-50 text-slate-900">
+      <Helmet>
+        <title>About Us | {seoConfig.schoolName} Ayodhya</title>
+        <meta
+          name="description"
+          content="Learn about Parma Academy, an ICSE school in Ayodhya dedicated to academic excellence, values, and holistic student development."
+        />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={`About Us | ${seoConfig.schoolName}`} />
+        <meta
+          property="og:description"
+          content="Discover the mission and leadership of Parma Academy, an ICSE affiliated school in Ayodhya."
+        />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <section className="mx-auto max-w-5xl px-6 py-16">
         <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">
@@ -111,7 +132,8 @@ function AboutPage() {
                     <img
                       className="h-20 w-20 rounded-full border border-slate-200 bg-white object-cover"
                       src={item.image}
-                      alt={item.name}
+                      alt={`${item.name} - ICSE school in Ayodhya leadership`}
+                      loading="lazy"
                     />
                   ) : (
                     <div className="flex h-20 w-20 items-center justify-center rounded-full border border-dashed border-slate-200 bg-white text-[11px] font-semibold text-slate-500">
@@ -165,18 +187,18 @@ function AboutPage() {
           </div>
         </div>
         <div className="mt-10 flex flex-wrap items-center gap-4 text-sm text-slate-500">
-          <a href="#/about" className="font-semibold text-emerald-700">
+          <Link to="/about" className="font-semibold text-emerald-700">
             About Us
-          </a>
-          <a href="#/events" className="hover:text-emerald-700">
+          </Link>
+          <Link to="/events" className="hover:text-emerald-700">
             Events
-          </a>
-          <a href="#/contact" className="hover:text-emerald-700">
+          </Link>
+          <Link to="/contact-ayodhya" className="hover:text-emerald-700">
             Contact
-          </a>
-          <a href="#/admission" className="hover:text-emerald-700">
+          </Link>
+          <Link to="/admission-ayodhya" className="hover:text-emerald-700">
             Admission
-          </a>
+          </Link>
         </div>
       </section>
     </main>

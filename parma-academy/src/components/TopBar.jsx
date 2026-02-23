@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function TopBar() {
   return (
     <div className="border-b border-slate-200 bg-white">
@@ -8,15 +10,15 @@ function TopBar() {
           <span>Ayodhya, Uttar Pradesh</span>
         </div>
         <div className="flex items-center gap-3 font-medium">
-          <a
-            href="#/admission"
+          <Link
+            to="/admission-ayodhya"
             className="rounded-full bg-emerald-50 px-3 py-1 text-emerald-700 hover:bg-emerald-100"
           >
             Admission Open
-          </a>
-          <a href="#/contact" className="text-slate-500 hover:text-emerald-600">
+          </Link>
+          <Link to="/contact-ayodhya" className="text-slate-500 hover:text-emerald-600">
             Follow Us
-          </a>
+          </Link>
         </div>
       </div>
     </div>

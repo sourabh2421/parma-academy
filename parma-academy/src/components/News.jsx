@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const newsItems = [
   {
     title: 'Vacancy',
@@ -28,12 +30,12 @@ function News() {
             Stay updated with what is new
           </h2>
         </div>
-        <a
-          href="#/events"
+        <Link
+          to="/events"
           className="rounded-full border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-700 transition hover:border-emerald-600 hover:text-emerald-700"
         >
           View all updates
-        </a>
+        </Link>
       </div>
       <div className="mt-8 grid gap-6 md:grid-cols-3">
         {newsItems.map((item) => (

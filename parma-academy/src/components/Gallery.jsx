@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import galleryOne from '../assets/Gallery1.avif'
 import galleryTwo from '../assets/Gallery2.avif'
 import galleryThree from '../assets/Gallery3.avif'
@@ -16,12 +17,12 @@ function Gallery() {
               Moments from campus life
             </h2>
           </div>
-          <a
-            href="#/gallery"
+          <Link
+            to="/gallery"
             className="rounded-full border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-700 transition hover:border-emerald-600 hover:text-emerald-700"
           >
             View full gallery
-          </a>
+          </Link>
         </div>
         <div className="mt-8 grid gap-4">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -30,7 +31,8 @@ function Gallery() {
                 <img
                   className="h-48 w-full object-cover transition duration-300 hover:scale-105"
                   src={image}
-                  alt="School gallery"
+                  alt="ICSE school in Ayodhya campus gallery"
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -39,7 +41,8 @@ function Gallery() {
             <img
               className="h-56 w-full object-cover transition duration-300 hover:scale-105 sm:h-64"
               src={galleryWide}
-              alt="School campus"
+              alt="ICSE school in Ayodhya campus highlights"
+              loading="lazy"
             />
           </div>
         </div>

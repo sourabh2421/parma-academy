@@ -1,6 +1,27 @@
+import { Helmet } from 'react-helmet-async'
+import { seoConfig } from '../seo/seoConfig.js'
+
 function ContactPage() {
+  const canonicalUrl = `${seoConfig.siteUrl}/contact-ayodhya`
+
   return (
     <section className="mx-auto max-w-4xl px-6 py-16">
+      <Helmet>
+        <title>Contact | {seoConfig.schoolName} Ayodhya</title>
+        <meta
+          name="description"
+          content="Contact Parma Academy, a leading ICSE school in Ayodhya. Get admissions and campus visit assistance from our team."
+        />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={`Contact | ${seoConfig.schoolName}`} />
+        <meta
+          property="og:description"
+          content="Reach Parma Academy, an ICSE affiliated school in Ayodhya."
+        />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">
         Contact
       </p>

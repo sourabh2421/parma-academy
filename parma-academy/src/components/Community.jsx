@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function Community() {
   return (
     <section className="bg-white">
@@ -15,12 +17,12 @@ function Community() {
           <p className="mt-3 text-sm text-slate-600">
             Counseling, clubs, and mentorship for holistic growth.
           </p>
-          <a
-            href="#contact"
+          <Link
+            to="/contact-ayodhya"
             className="mt-4 inline-flex text-sm font-semibold text-emerald-700 hover:text-emerald-800"
           >
             Learn more →
-          </a>
+          </Link>
         </div>
         <div
           id="employee"
@@ -35,12 +37,12 @@ function Community() {
           <p className="mt-3 text-sm text-slate-600">
             Supportive workplace policies and growth opportunities.
           </p>
-          <a
-            href="#contact"
+          <Link
+            to="/employee"
             className="mt-4 inline-flex text-sm font-semibold text-emerald-700 hover:text-emerald-800"
           >
             Learn more →
-          </a>
+          </Link>
         </div>
         <div
           id="staff"
@@ -55,12 +57,12 @@ function Community() {
           <p className="mt-3 text-sm text-slate-600">
             Dedicated educators guiding every classroom.
           </p>
-          <a
-            href="#leadership"
+          <Link
+            to="/staff"
             className="mt-4 inline-flex text-sm font-semibold text-emerald-700 hover:text-emerald-800"
           >
             Meet our leaders →
-          </a>
+          </Link>
         </div>
         <div
           id="fees"
@@ -76,12 +78,12 @@ function Community() {
             Detailed fee schedules are available on request. Our team can guide
             you on admission charges and payment timelines.
           </p>
-          <a
-            href="#admission"
+          <Link
+            to="/fees"
             className="mt-4 inline-flex text-sm font-semibold text-emerald-700 hover:text-emerald-800"
           >
             Request fee details →
-          </a>
+          </Link>
         </div>
       </div>
     </section>

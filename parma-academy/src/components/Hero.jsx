@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import heroImage from '../assets/Heroimageparmaacademy.jpeg'
 
 const quickFacts = [
@@ -15,7 +16,7 @@ function Hero() {
             Holistic Education since 2004
           </div>
           <h1 className="text-4xl font-semibold leading-tight text-slate-900 lg:text-5xl">
-            A school where values, learning, and leadership grow together.
+            Best ICSE School in Ayodhya
           </h1>
           <p className="text-lg text-slate-600">
             Parma Academy blends modern infrastructure with timeless wisdom. Our
@@ -23,18 +24,18 @@ function Hero() {
             to build a meaningful future.
           </p>
           <div className="flex flex-wrap gap-4">
-            <a
-              href="#/admission"
+            <Link
+              to="/admission-ayodhya"
               className="rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
             >
               Explore Admissions
-            </a>
-            <a
-              href="#/contact"
+            </Link>
+            <Link
+              to="/contact-ayodhya"
               className="rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-emerald-600 hover:text-emerald-700"
             >
               Schedule a Visit
-            </a>
+            </Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {quickFacts.map((fact) => (
@@ -56,7 +57,8 @@ function Hero() {
           <img
             className="relative z-10 w-full rounded-3xl object-cover shadow-xl"
             src={heroImage}
-            alt="Students in classroom"
+            alt="ICSE school in Ayodhya campus classroom"
+            loading="eager"
           />
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import TopBar from './components/TopBar.jsx'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
@@ -12,25 +13,9 @@ import StaffPage from './innercomponents/StaffPage.jsx'
 import FeesPage from './innercomponents/FeesPage.jsx'
 import ContactPage from './innercomponents/ContactPage.jsx'
 import GalleryPage from './innercomponents/GalleryPage.jsx'
-
-const routes = {
-  '/': HomePage,
-  '/about': AboutPage,
-  '/events': EventsPage,
-  '/admission': AdmissionPage,
-  '/student': StudentPage,
-  '/employee': EmployeePage,
-  '/staff': StaffPage,
-  '/fees': FeesPage,
-  '/contact': ContactPage,
-  '/gallery': GalleryPage,
-}
-
-const getRouteFromHash = () => {
-  const hash = window.location.hash || '#/'
-  const path = hash.replace('#', '')
-  return routes[path] ? path : '/'
-}
+import FacilitiesPage from './innercomponents/FacilitiesPage.jsx'
+import BlogPage from './innercomponents/BlogPage.jsx'
+import BlogPostPage from './innercomponents/BlogPostPage.jsx'
 
 const getInitialTheme = () => {
   if (typeof window === 'undefined') return false
@@ -41,13 +26,6 @@ const getInitialTheme = () => {
 
 function App() {
   const [isDark, setIsDark] = useState(getInitialTheme)
-  const [route, setRoute] = useState(getRouteFromHash)
-
-  useEffect(() => {
-    const handleChange = () => setRoute(getRouteFromHash())
-    window.addEventListener('hashchange', handleChange)
-    return () => window.removeEventListener('hashchange', handleChange)
-  }, [])
 
   useEffect(() => {
     const root = document.documentElement
@@ -60,14 +38,31 @@ function App() {
     }
   }, [isDark])
 
-  const CurrentPage = routes[route] || HomePage
-
   return (
     <div className="bg-slate-50 text-slate-900">
       <TopBar />
       <Header />
       <main>
-        <CurrentPage />
+        <Routes>
+          <Route path="/" element={<Navigate to="/icse-school-in-ayodhya" replace />} />
+          <Route path="/icse-school-in-ayodhya" element={<HomePage />} />
+          <Route path="/admission-ayodhya" element={<AdmissionPage />} />
+          <Route path="/facilities" element={<FacilitiesPage />} />
+          <Route path="/contact-ayodhya" element={<ContactPage />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/fees" element={<FeesPage />} />
+          <Route path="/staff" element={<StaffPage />} />
+          <Route path="/student" element={<StudentPage />} />
+          <Route path="/employee" element={<EmployeePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route
+            path="/blog/why-choose-icse-school-in-ayodhya"
+            element={<BlogPostPage />}
+          />
+          <Route path="*" element={<Navigate to="/icse-school-in-ayodhya" replace />} />
+        </Routes>
       </main>
       <Footer />
       <button

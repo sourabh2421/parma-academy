@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async'
+import { seoConfig } from '../seo/seoConfig.js'
 import shriNarayanRai from '../assets/ShriNarayanRai.jpeg'
 import sudhirRai from '../assets/SudhirRai.jpeg'
 import sunitaRai from '../assets/SunitaRai.jpeg'
@@ -105,8 +107,26 @@ const staffGroups = [
 ]
 
 function StaffPage() {
+  const canonicalUrl = `${seoConfig.siteUrl}/staff`
+
   return (
     <main className="bg-slate-50 text-slate-900">
+      <Helmet>
+        <title>Faculty & Staff | {seoConfig.schoolName} Ayodhya</title>
+        <meta
+          name="description"
+          content="Meet the leadership and faculty at Parma Academy, a trusted ICSE school in Ayodhya committed to student success."
+        />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={`Faculty | ${seoConfig.schoolName}`} />
+        <meta
+          property="og:description"
+          content="Faculty profiles from Parma Academy, an ICSE affiliated school in Ayodhya."
+        />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <section className="mx-auto max-w-6xl px-6 py-16">
         <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">
           Our Faculty
@@ -146,7 +166,8 @@ function StaffPage() {
                       <img
                         className="h-12 w-12 rounded-full border border-slate-200 bg-white object-cover"
                         src={member.image}
-                        alt={member.name}
+                        alt={`${member.name} - ICSE school in Ayodhya leadership`}
+                        loading="lazy"
                       />
                     ) : null}
                     <div>

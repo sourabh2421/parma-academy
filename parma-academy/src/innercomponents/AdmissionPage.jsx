@@ -1,8 +1,11 @@
 import { useRef } from 'react'
+import { Helmet } from 'react-helmet-async'
 import emailjs from '@emailjs/browser'
+import { seoConfig } from '../seo/seoConfig.js'
 
 function AdmissionPage() {
   const form = useRef()
+  const canonicalUrl = `${seoConfig.siteUrl}/admission-ayodhya`
 
   const sendEmail = (e) => {
     e.preventDefault()
@@ -26,6 +29,22 @@ function AdmissionPage() {
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-16">
+      <Helmet>
+        <title>Admissions | {seoConfig.schoolName} Ayodhya</title>
+        <meta
+          name="description"
+          content="Apply to Parma Academy, a top ICSE school in Ayodhya. Submit the admission form to start your child's learning journey."
+        />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={`Admissions | ${seoConfig.schoolName}`} />
+        <meta
+          property="og:description"
+          content="Admissions open at Parma Academy, an ICSE affiliated school in Ayodhya."
+        />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
           <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">

@@ -26,12 +26,14 @@ function Infrastructure() {
           <img
             className="h-56 w-full rounded-3xl object-cover shadow-lg sm:h-64 lg:h-56"
             src={infraImage}
-            alt="Parma Academy building"
+            alt="ICSE school in Ayodhya campus building"
+            loading="lazy"
           />
           <img
             className="h-56 w-full rounded-3xl object-cover shadow-lg sm:h-64 lg:h-56"
             src={infraImageTwo}
-            alt="Parma Academy classroom"
+            alt="ICSE school in Ayodhya classroom"
+            loading="lazy"
           />
         </div>
         <div className="grid gap-4">

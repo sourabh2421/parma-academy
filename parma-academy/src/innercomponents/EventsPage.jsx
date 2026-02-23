@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async'
+import { seoConfig } from '../seo/seoConfig.js'
 import admissionContest from '../assets/Admissioncontest.jpeg'
 import holi2025 from '../assets/Holi2025-1.jpeg'
 import independence2025One from '../assets/Independence2025-1.jpeg'
@@ -84,8 +86,26 @@ const events = [
 ]
 
 function EventsPage() {
+  const canonicalUrl = `${seoConfig.siteUrl}/events`
+
   return (
     <main className="bg-slate-50 text-slate-900">
+      <Helmet>
+        <title>Events | {seoConfig.schoolName} Ayodhya</title>
+        <meta
+          name="description"
+          content="Explore recent events and celebrations at Parma Academy, a leading ICSE school in Ayodhya. Discover campus life and student achievements."
+        />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={`Events | ${seoConfig.schoolName}`} />
+        <meta
+          property="og:description"
+          content="Event highlights from Parma Academy, an ICSE affiliated school in Ayodhya."
+        />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <section className="mx-auto max-w-6xl px-6 py-16">
         <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">
           Events
@@ -135,7 +155,8 @@ function EventsPage() {
                       <img
                         className="h-40 w-full object-cover transition duration-300 hover:scale-105 sm:h-44"
                         src={image}
-                        alt={`${event.title} photo`}
+                        alt={`${event.title} at ICSE school in Ayodhya`}
+                        loading="lazy"
                       />
                     </div>
                   ))}
