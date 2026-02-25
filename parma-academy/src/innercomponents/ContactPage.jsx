@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import { seoConfig } from '../seo/seoConfig.js'
+import instagramIcon from '../assets/instagram.svg'
 
 function ContactPage() {
   const canonicalUrl = `${seoConfig.siteUrl}/contact-ayodhya`
@@ -46,6 +47,19 @@ function ContactPage() {
           </div>
         ))}
       </div>
+      <a
+        href="https://www.instagram.com/parmaacademy?igsh=MWFleW03NDRvN2l3Yg=="
+        target="_blank"
+        rel="noreferrer"
+        className="mt-6 inline-flex items-center justify-center rounded-full px-8 py-3 text-base font-semibold text-white shadow-lg transition hover:opacity-90"
+        style={{
+          background:
+            'linear-gradient(90deg, #405DE6 0%, #833AB4 25%, #C13584 50%, #FD1D1D 75%, #F58529 100%)',
+        }}
+      >
+        <img src={instagramIcon} alt="" className="mr-2 h-5 w-5" aria-hidden="true" />
+        Follow us on Instagram
+      </a>
     </section>
   )
 }

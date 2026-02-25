@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { seoConfig } from '../seo/seoConfig.js'
+import instagramIcon from '../assets/instagram.svg'
 
 function Footer() {
   return (
@@ -35,6 +36,19 @@ function Footer() {
           <p>{seoConfig.address}</p>
           <p>Phone: {seoConfig.phone}</p>
           <p>Email: {seoConfig.email}</p>
+          <a
+            href="https://www.instagram.com/parmaacademy?igsh=MWFleW03NDRvN2l3Yg=="
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white transition hover:opacity-90"
+            style={{
+              background:
+                'linear-gradient(90deg, #405DE6 0%, #833AB4 25%, #C13584 50%, #FD1D1D 75%, #F58529 100%)',
+            }}
+          >
+            <img src={instagramIcon} alt="" className="mr-2 h-4 w-4" aria-hidden="true" />
+            Follow on Instagram
+          </a>
         </div>
       </div>
       <div className="border-t border-slate-800 py-4 text-center text-xs text-slate-500">

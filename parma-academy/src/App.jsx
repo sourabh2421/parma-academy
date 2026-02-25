@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import whatsappIcon from './assets/whatsapp.svg'
 import TopBar from './components/TopBar.jsx'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
@@ -21,7 +22,7 @@ const getInitialTheme = () => {
   if (typeof window === 'undefined') return false
   const storedTheme = window.localStorage.getItem('theme')
   if (storedTheme) return storedTheme === 'dark'
-  return window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ?? false
+  return false
 }
 
 function App() {
@@ -65,6 +66,15 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <a
+        href="https://wa.me/918853810084"
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-20 right-6 z-50 inline-flex items-center justify-center rounded-full bg-emerald-600 p-4 shadow-lg transition hover:bg-emerald-700"
+        aria-label="Chat on WhatsApp"
+      >
+        <img src={whatsappIcon} alt="" className="h-7 w-7" aria-hidden="true" />
+      </a>
       <button
         type="button"
         onClick={() => setIsDark((prev) => !prev)}

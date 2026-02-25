@@ -27,7 +27,8 @@ function Header() {
           <img
             src={logo}
             alt="Parma Academy ICSE school in Ayodhya logo"
-            className="h-12 w-12 rounded-full border border-slate-200 bg-white object-contain p-1 dark:border-slate-700 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
+            className="h-12 w-12 rounded-full border border-slate-200 object-contain p-1 dark:border-slate-700 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
+            style={{ backgroundColor: '#ffffff' }}
           />
           <div>
             <p className="text-base font-semibold text-emerald-700 dark:text-emerald-300 sm:text-lg">
