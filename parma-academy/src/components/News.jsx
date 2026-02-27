@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom'
 const newsItems = [
   {
     title: 'Vacancy',
-    date: '2025-02-01',
+    date: '2026-02-01',
     detail: 'We have openings for subject teachers.',
   },
   {
     title: 'New Session',
-    date: '2025-02-10',
+    date: '2026-02-10',
     detail: 'New batch starts this April. Admissions now open.',
   },
   {
     title: 'Admission Open',
-    date: '2025-02-10',
+    date: '2026-02-10',
     detail: 'Admissions open from pre-school to grade 12.',
   },
 ]
