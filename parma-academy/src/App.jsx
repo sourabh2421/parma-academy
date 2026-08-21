@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import whatsappIcon from './assets/whatsapp.svg'
 import TopBar from './components/TopBar.jsx'
 import Header from './components/Header.jsx'
@@ -17,6 +17,13 @@ import GalleryPage from './innercomponents/GalleryPage.jsx'
 import FacilitiesPage from './innercomponents/FacilitiesPage.jsx'
 import BlogPage from './innercomponents/BlogPage.jsx'
 import BlogPostPage from './innercomponents/BlogPostPage.jsx'
+import LoginPage from './innercomponents/LoginPage.jsx'
+import DashboardLayout from './innercomponents/DashboardLayout.jsx'
+import DashboardOverview from './innercomponents/dashboard/DashboardOverview.jsx'
+import StudentsPage from './innercomponents/dashboard/StudentsPage.jsx'
+import FeeRecordsPage from './innercomponents/dashboard/FeeRecordsPage.jsx'
+import PendingFeesPage from './innercomponents/dashboard/PendingFeesPage.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 const getInitialTheme = () => {
   if (typeof window === 'undefined') return false
@@ -27,6 +34,8 @@ const getInitialTheme = () => {
 
 function App() {
   const [isDark, setIsDark] = useState(getInitialTheme)
+  const location = useLocation()
+  const hidePublicChrome = location.pathname === '/login' || location.pathname.startsWith('/dashboard')
 
   useEffect(() => {
     const root = document.documentElement
@@ -41,8 +50,8 @@ function App() {
 
   return (
     <div className="bg-slate-50 text-slate-900">
-      <TopBar />
-      <Header />
+      {!hidePublicChrome ? <TopBar /> : null}
+      {!hidePublicChrome ? <Header /> : null}
       <main>
         <Routes>
           <Route path="/" element={<Navigate to="/icse-school-in-ayodhya" replace />} />
@@ -62,10 +71,24 @@ function App() {
             path="/blog/why-choose-icse-school-in-ayodhya"
             element={<BlogPostPage />}
           />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashboardLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<DashboardOverview />} />
+            <Route path="students" element={<StudentsPage />} />
+            <Route path="fees" element={<FeeRecordsPage />} />
+            <Route path="pending" element={<PendingFeesPage />} />
+          </Route>
           <Route path="*" element={<Navigate to="/icse-school-in-ayodhya" replace />} />
         </Routes>
       </main>
-      <Footer />
+      {!hidePublicChrome ? <Footer /> : null}
       <a
         href="https://wa.me/918853810084"
         target="_blank"

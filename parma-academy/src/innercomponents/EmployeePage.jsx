@@ -1,15 +1,27 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import emailjs from '@emailjs/browser'
 import { seoConfig } from '../seo/seoConfig.js'
 
 function EmployeePage() {
   const form = useRef()
+  const [submitting, setSubmitting] = useState(false)
   const canonicalUrl = `${seoConfig.siteUrl}/employee`
 
   const sendEmployeeEmail = (e) => {
     e.preventDefault()
+    if (submitting) return
 
+    const formData = new FormData(form.current)
+    const honeypot = formData.get('website_url')
+    if (honeypot) {
+      // Anti-bot honeypot triggered: pretend success to deceive bot
+      alert('Employee form submitted successfully!')
+      e.target.reset()
+      return
+    }
+
+    setSubmitting(true)
     emailjs
       .sendForm(
         import.meta.env.VITE_EMAIL_SERVICE_ID,
@@ -24,6 +36,9 @@ function EmployeePage() {
       .catch((error) => {
         console.error(error)
         alert('Failed to submit form.')
+      })
+      .finally(() => {
+        setSubmitting(false)
       })
   }
 
@@ -81,6 +96,11 @@ function EmployeePage() {
           onSubmit={sendEmployeeEmail}
           className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
         >
+          {/* Anti-bot honeypot field */}
+          <div style={{ display: 'none' }} aria-hidden="true">
+            <input type="text" name="website_url" tabIndex={-1} autoComplete="off" />
+          </div>
+
           <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600">
             Employee Form
           </p>
@@ -96,6 +116,8 @@ function EmployeePage() {
                 className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
                 type="text"
                 name="full_name"
+                required
+                maxLength={100}
                 placeholder="Employee full name"
               />
             </div>
@@ -121,6 +143,8 @@ function EmployeePage() {
                 className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
                 type="tel"
                 name="phone"
+                required
+                maxLength={20}
                 placeholder="+91 00000 00000"
               />
             </div>
@@ -132,6 +156,8 @@ function EmployeePage() {
                 className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
                 type="email"
                 name="email"
+                required
+                maxLength={100}
                 placeholder="name@email.com"
               />
             </div>
@@ -144,6 +170,7 @@ function EmployeePage() {
               className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
               type="text"
               name="experience"
+              maxLength={100}
               placeholder="Years of experience"
             />
           </div>
@@ -155,14 +182,16 @@ function EmployeePage() {
               className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
               rows="4"
               name="message"
+              maxLength={1000}
               placeholder="Tell us about your profile"
             />
           </div>
           <button
             type="submit"
-            className="mt-6 w-full rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700"
+            disabled={submitting}
+            className="mt-6 w-full rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:opacity-60"
           >
-            Submit Employee Form
+            {submitting ? 'Submitting…' : 'Submit Employee Form'}
           </button>
         </form>
       </div>

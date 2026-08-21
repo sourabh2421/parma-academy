@@ -1,15 +1,27 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import emailjs from '@emailjs/browser'
 import { seoConfig } from '../seo/seoConfig.js'
 
 function AdmissionPage() {
   const form = useRef()
+  const [submitting, setSubmitting] = useState(false)
   const canonicalUrl = `${seoConfig.siteUrl}/admission-ayodhya`
 
   const sendEmail = (e) => {
     e.preventDefault()
+    if (submitting) return
 
+    const formData = new FormData(form.current)
+    const honeypot = formData.get('website_url')
+    if (honeypot) {
+      // Anti-bot honeypot triggered: pretend success to deceive bot
+      alert('Admission form submitted successfully!')
+      e.target.reset()
+      return
+    }
+
+    setSubmitting(true)
     emailjs
       .sendForm(
         import.meta.env.VITE_EMAIL_SERVICE_ID,
@@ -24,6 +36,9 @@ function AdmissionPage() {
       .catch((error) => {
         console.error(error)
         alert('Failed to submit form.')
+      })
+      .finally(() => {
+        setSubmitting(false)
       })
   }
 
@@ -69,6 +84,11 @@ function AdmissionPage() {
           onSubmit={sendEmail}
           className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
         >
+          {/* Anti-bot honeypot field */}
+          <div style={{ display: 'none' }} aria-hidden="true">
+            <input type="text" name="website_url" tabIndex={-1} autoComplete="off" />
+          </div>
+
           <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600">
             Student Admission Form
           </p>
@@ -84,6 +104,8 @@ function AdmissionPage() {
                 className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
                 type="text"
                 name="student_name"
+                required
+                maxLength={100}
                 placeholder="Student full name"
               />
             </div>
@@ -128,6 +150,7 @@ function AdmissionPage() {
                 className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
                 type="text"
                 name="previous_school"
+                maxLength={150}
                 placeholder="Current/previous school"
               />
             </div>
@@ -140,6 +163,8 @@ function AdmissionPage() {
               className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
               type="text"
               name="parent_name"
+              required
+              maxLength={100}
               placeholder="Parent or guardian name"
             />
           </div>
@@ -152,6 +177,8 @@ function AdmissionPage() {
                 className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
                 type="tel"
                 name="phone"
+                required
+                maxLength={20}
                 placeholder="+91 00000 00000"
               />
             </div>
@@ -163,6 +190,7 @@ function AdmissionPage() {
                 className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
                 type="email"
                 name="email"
+                maxLength={100}
                 placeholder="parent@email.com"
               />
             </div>
@@ -175,14 +203,16 @@ function AdmissionPage() {
               className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-500 focus:outline-none"
               rows="4"
               name="message"
+              maxLength={1000}
               placeholder="Tell us about the student"
             />
           </div>
           <button
             type="submit"
-            className="mt-6 w-full rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700"
+            disabled={submitting}
+            className="mt-6 w-full rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:opacity-60"
           >
-            Submit Admission Form
+            {submitting ? 'Submitting…' : 'Submit Admission Form'}
           </button>
         </form>
       </div>
