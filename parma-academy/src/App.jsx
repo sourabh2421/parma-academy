@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import whatsappIcon from './assets/whatsapp.svg'
-import TopBar from './components/TopBar.jsx'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import HomePage from './innercomponents/HomePage.jsx'
@@ -50,7 +49,6 @@ function App() {
 
   return (
     <div className="bg-slate-50 text-slate-900">
-      {!hidePublicChrome ? <TopBar /> : null}
       {!hidePublicChrome ? <Header /> : null}
       <main>
         <Routes>

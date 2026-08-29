@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import logo from '../assets/logo1.webp'
+import { SlideTabs } from './ui/slide-tabs'
 
 const navLinks = [
   { label: 'Home', href: '/icse-school-in-ayodhya' },
@@ -21,52 +22,37 @@ function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-700/70 dark:bg-slate-900/90">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-        <div className="flex items-center gap-3">
+    <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-700/70 dark:bg-slate-900/95">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+        <Link to="/icse-school-in-ayodhya" className="flex shrink-0 items-center gap-3">
           <img
             src={logo}
-            alt="Parma Academy ICSE school in Ayodhya logo"
-            className="h-12 w-12 rounded-full border border-slate-200 object-contain p-1 dark:border-slate-700 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
+            alt="Parma Academy logo"
+            className="h-11 w-11 rounded-full border border-slate-200 object-contain p-1 dark:border-slate-700 sm:h-13 sm:w-13"
             style={{ backgroundColor: '#ffffff' }}
           />
-          <div>
-            <p className="text-base font-semibold text-emerald-700 dark:text-emerald-300 sm:text-lg">
+          <div className="whitespace-nowrap">
+            <p className="text-base font-bold leading-tight text-emerald-700 dark:text-emerald-300 sm:text-lg">
               Parma Academy
             </p>
-            <p className="text-[10px] uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400 sm:text-xs sm:tracking-[0.3em]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 sm:text-xs">
               The Future Begins Here
             </p>
           </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <nav
-            className="hidden items-center gap-6 text-sm font-medium text-slate-700 dark:text-slate-100 lg:flex"
-            aria-label="Primary"
-          >
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.label}
-                to={link.href}
-                className={({ isActive }) =>
-                  `hover:text-emerald-600 dark:hover:text-emerald-300 ${
-                    isActive ? 'text-emerald-700 dark:text-emerald-300' : ''
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
-          </nav>
+        </Link>
+        <div className="flex shrink-0 items-center gap-3">
+          <div className="hidden lg:block">
+            <SlideTabs tabs={navLinks} />
+          </div>
           <Link
             to="/login"
-            className="hidden rounded-full border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-emerald-300 hover:text-emerald-700 sm:px-4 sm:text-sm lg:inline-flex"
+            className="hidden rounded-full border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-emerald-300 hover:text-emerald-700 dark:border-slate-600 dark:text-slate-200 dark:hover:border-emerald-400 dark:hover:text-emerald-300 sm:px-4 sm:text-sm lg:inline-flex"
           >
             Login
           </Link>
           <Link
             to="/admission-ayodhya"
-            className="rounded-full bg-emerald-600 px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-emerald-700 sm:px-4 sm:text-sm lg:px-5"
+            className="whitespace-nowrap rounded-full bg-emerald-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-emerald-700 sm:px-4 sm:text-sm"
           >
             Get Admission
           </Link>
