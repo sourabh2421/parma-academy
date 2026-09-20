@@ -1,4 +1,29 @@
+# Standard Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# AI & LLM Search Crawlers (AEO & GEO Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# All other user agents
 User-agent: *
 Allow: /
 
+# Sitemap Index
 Sitemap: https://parmaacademy.com/sitemap.xml

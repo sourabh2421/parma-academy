@@ -8,9 +8,9 @@ const navLinks = [
   { label: 'About', href: '/about' },
   { label: 'Events', href: '/events' },
   { label: 'Admission', href: '/admission-ayodhya' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Employee', href: '/employee' },
   { label: 'Staff', href: '/staff' },
-  { label: 'Fees', href: '/fees' },
   { label: 'Contact', href: '/contact-ayodhya' },
 ]
 
@@ -45,12 +45,6 @@ function Header() {
             <SlideTabs tabs={navLinks} />
           </div>
           <Link
-            to="/login"
-            className="hidden rounded-full border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-emerald-300 hover:text-emerald-700 dark:border-slate-600 dark:text-slate-200 dark:hover:border-emerald-400 dark:hover:text-emerald-300 sm:px-4 sm:text-sm lg:inline-flex"
-          >
-            Login
-          </Link>
-          <Link
             to="/admission-ayodhya"
             className="whitespace-nowrap rounded-full bg-emerald-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-emerald-700 sm:px-4 sm:text-sm"
           >
@@ -84,13 +78,6 @@ function Header() {
                 {link.label}
               </NavLink>
             ))}
-            <Link
-              to="/login"
-              onClick={handleNavClick}
-              className="rounded-lg border border-slate-300 px-3 py-2 text-center transition hover:border-emerald-300 hover:text-emerald-700"
-            >
-              Login
-            </Link>
           </nav>
         </div>
       ) : null}

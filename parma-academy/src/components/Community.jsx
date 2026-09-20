@@ -64,27 +64,6 @@ function Community() {
             Meet our leaders →
           </Link>
         </div>
-        <div
-          id="fees"
-          className="rounded-2xl border border-slate-200 bg-slate-50 p-6 lg:col-span-3"
-        >
-          <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">
-            Fees
-          </p>
-          <h3 className="mt-2 text-xl font-semibold text-slate-900">
-            Transparent fee structure
-          </h3>
-          <p className="mt-3 text-sm text-slate-600">
-            Detailed fee schedules are available on request. Our team can guide
-            you on admission charges and payment timelines.
-          </p>
-          <Link
-            to="/fees"
-            className="mt-4 inline-flex text-sm font-semibold text-emerald-700 hover:text-emerald-800"
-          >
-            Request fee details →
-          </Link>
-        </div>
       </div>
     </section>
   )

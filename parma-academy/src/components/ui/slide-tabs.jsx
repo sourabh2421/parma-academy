@@ -1,4 +1,4 @@
-import React, { useRef, useState, useLayoutEffect, useEffect } from 'react'
+import React, { useRef, useState, useLayoutEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 
@@ -7,8 +7,9 @@ const defaultTabs = [
   { label: 'About', href: '/about' },
   { label: 'Events', href: '/events' },
   { label: 'Admission', href: '/admission-ayodhya' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Employee', href: '/employee' },
   { label: 'Staff', href: '/staff' },
-  { label: 'Fees', href: '/fees' },
   { label: 'Contact', href: '/contact-ayodhya' },
 ]
 
@@ -16,9 +17,8 @@ export const SlideTabs = ({ tabs = defaultTabs }) => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  // Find index of current route or default to 0
   const activeIndex = tabs.findIndex((tab) => tab.href === location.pathname)
-  const [selected, setSelected] = useState(activeIndex >= 0 ? activeIndex : 0)
+  const selected = activeIndex >= 0 ? activeIndex : 0
 
   const [position, setPosition] = useState({
     left: 0,
@@ -26,14 +26,6 @@ export const SlideTabs = ({ tabs = defaultTabs }) => {
     opacity: 0,
   })
   const tabsRef = useRef([])
-
-  // Keep selected tab in sync with current URL location
-  useEffect(() => {
-    const newIdx = tabs.findIndex((tab) => tab.href === location.pathname)
-    if (newIdx >= 0) {
-      setSelected(newIdx)
-    }
-  }, [location.pathname, tabs])
 
   useLayoutEffect(() => {
     const selectedTab = tabsRef.current[selected]
@@ -45,10 +37,9 @@ export const SlideTabs = ({ tabs = defaultTabs }) => {
         opacity: 1,
       })
     }
-  }, [selected])
+  }, [location.pathname, selected])
 
-  const handleSelect = (index, href) => {
-    setSelected(index)
+  const handleSelect = (href) => {
     if (href) {
       navigate(href)
     }
@@ -74,7 +65,7 @@ export const SlideTabs = ({ tabs = defaultTabs }) => {
           key={tab.label}
           ref={(el) => (tabsRef.current[i] = el)}
           setPosition={setPosition}
-          onClick={() => handleSelect(i, tab.href)}
+          onClick={() => handleSelect(tab.href)}
         >
           {tab.label}
         </Tab>

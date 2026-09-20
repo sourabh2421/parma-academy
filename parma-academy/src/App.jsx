@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import whatsappIcon from './assets/whatsapp.svg'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
@@ -10,19 +10,11 @@ import AdmissionPage from './innercomponents/AdmissionPage.jsx'
 import StudentPage from './innercomponents/StudentPage.jsx'
 import EmployeePage from './innercomponents/EmployeePage.jsx'
 import StaffPage from './innercomponents/StaffPage.jsx'
-import FeesPage from './innercomponents/FeesPage.jsx'
 import ContactPage from './innercomponents/ContactPage.jsx'
 import GalleryPage from './innercomponents/GalleryPage.jsx'
 import FacilitiesPage from './innercomponents/FacilitiesPage.jsx'
 import BlogPage from './innercomponents/BlogPage.jsx'
 import BlogPostPage from './innercomponents/BlogPostPage.jsx'
-import LoginPage from './innercomponents/LoginPage.jsx'
-import DashboardLayout from './innercomponents/DashboardLayout.jsx'
-import DashboardOverview from './innercomponents/dashboard/DashboardOverview.jsx'
-import StudentsPage from './innercomponents/dashboard/StudentsPage.jsx'
-import FeeRecordsPage from './innercomponents/dashboard/FeeRecordsPage.jsx'
-import PendingFeesPage from './innercomponents/dashboard/PendingFeesPage.jsx'
-import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 const getInitialTheme = () => {
   if (typeof window === 'undefined') return false
@@ -33,8 +25,6 @@ const getInitialTheme = () => {
 
 function App() {
   const [isDark, setIsDark] = useState(getInitialTheme)
-  const location = useLocation()
-  const hidePublicChrome = location.pathname === '/login' || location.pathname.startsWith('/dashboard')
 
   useEffect(() => {
     const root = document.documentElement
@@ -49,7 +39,7 @@ function App() {
 
   return (
     <div className="bg-slate-50 text-slate-900">
-      {!hidePublicChrome ? <Header /> : null}
+      <Header />
       <main>
         <Routes>
           <Route path="/" element={<Navigate to="/icse-school-in-ayodhya" replace />} />
@@ -59,34 +49,16 @@ function App() {
           <Route path="/contact-ayodhya" element={<ContactPage />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/fees" element={<FeesPage />} />
           <Route path="/staff" element={<StaffPage />} />
           <Route path="/student" element={<StudentPage />} />
           <Route path="/employee" element={<EmployeePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/blog" element={<BlogPage />} />
-          <Route
-            path="/blog/why-choose-icse-school-in-ayodhya"
-            element={<BlogPostPage />}
-          />
-          <Route path="/login" element={<LoginPage />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <DashboardLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<DashboardOverview />} />
-            <Route path="students" element={<StudentsPage />} />
-            <Route path="fees" element={<FeeRecordsPage />} />
-            <Route path="pending" element={<PendingFeesPage />} />
-          </Route>
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="*" element={<Navigate to="/icse-school-in-ayodhya" replace />} />
         </Routes>
       </main>
-      {!hidePublicChrome ? <Footer /> : null}
+      <Footer />
       <a
         href="https://wa.me/918853810084"
         target="_blank"

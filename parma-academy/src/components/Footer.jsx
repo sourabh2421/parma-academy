@@ -27,6 +27,9 @@ function Footer() {
           <Link to="/admission-ayodhya" className="block hover:text-emerald-300">
             Admission
           </Link>
+          <Link to="/blog" className="block hover:text-emerald-300">
+            Blog & Parent Guides
+          </Link>
           <Link to="/contact-ayodhya" className="block hover:text-emerald-300">
             Contact
           </Link>
