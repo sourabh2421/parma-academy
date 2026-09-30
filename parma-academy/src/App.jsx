@@ -70,7 +70,7 @@ function App() {
         className="fixed bottom-20 right-6 z-50 inline-flex items-center justify-center rounded-full bg-emerald-600 p-4 shadow-lg transition hover:bg-emerald-700"
         aria-label="Chat on WhatsApp"
       >
-        <img src={whatsappIcon} alt="" className="h-7 w-7" aria-hidden="true" />
+        <img src={whatsappIcon} alt="Chat on WhatsApp" width="28" height="28" className="h-7 w-7" aria-hidden="true" />
       </a>
       <button
         type="button"

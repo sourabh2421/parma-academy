@@ -61,7 +61,7 @@ function HomePage() {
       latitude: 26.7922,
       longitude: 82.1998,
     },
-    telephone: seoConfig.phone,
+    telephone: ['+91 7007178570', '+91 7905601642'],
     email: seoConfig.email,
     openingHours: 'Mo-Sa 08:00-16:00',
     priceRange: '$$',
@@ -77,7 +77,7 @@ function HomePage() {
         <title>Best ICSE School in Ayodhya | {seoConfig.schoolName}</title>
         <meta
           name="description"
-          content="Parma Academy is a leading ICSE school in Ayodhya offering quality education, modern facilities, experienced faculty, and holistic development for every student."
+          content="Parma Academy is a leading ICSE school in Ayodhya offering quality education, modern science labs, sports facilities, and holistic growth from Pre-K to Grade 12."
         />
         <link rel="canonical" href={canonicalUrl} />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -87,14 +87,17 @@ function HomePage() {
         />
         <meta
           property="og:description"
-          content="Discover Parma Academy, a top ICSE affiliated school in Ayodhya focused on academic excellence and holistic growth."
+          content="Parma Academy is a leading ICSE school in Ayodhya offering quality education, modern science labs, sports facilities, and holistic growth from Pre-K to Grade 12."
         />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={ogImage} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`Best ICSE School in Ayodhya | ${seoConfig.schoolName}`} />
-        <meta name="twitter:description" content="Discover Parma Academy, a top ICSE affiliated school in Ayodhya focused on academic excellence and holistic growth." />
+        <meta
+          name="twitter:description"
+          content="Parma Academy is a leading ICSE school in Ayodhya offering quality education, modern science labs, sports facilities, and holistic growth from Pre-K to Grade 12."
+        />
         <meta name="twitter:image" content={ogImage} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script type="application/ld+json">{JSON.stringify(educationalOrgSchema)}</script>

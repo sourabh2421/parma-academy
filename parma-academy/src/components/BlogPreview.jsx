@@ -51,8 +51,11 @@ function BlogPreview() {
                   <img
                     src={post.coverImage}
                     alt={post.title}
+                    width="600"
+                    height="340"
                     className="h-48 w-full object-cover transition duration-300 group-hover:scale-105"
                     loading="lazy"
+                    decoding="async"
                   />
                 </Link>
                 <div className="p-6">

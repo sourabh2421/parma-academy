@@ -34,11 +34,25 @@ function Footer() {
             Contact
           </Link>
         </div>
-        <div className="space-y-2 text-sm text-slate-400">
-          <p className="font-semibold text-white">Contact</p>
+        <address className="not-italic space-y-2 text-sm text-slate-400">
+          <p className="font-semibold text-white">Campus Address & Contact</p>
           <p>{seoConfig.address}</p>
-          <p>Phone: {seoConfig.phone}</p>
-          <p>Email: {seoConfig.email}</p>
+          <p>
+            Phone:{' '}
+            <a href="tel:+917007178570" className="hover:text-emerald-400">
+              +91 7007178570
+            </a>
+            ,{' '}
+            <a href="tel:+917905601642" className="hover:text-emerald-400">
+              +91 7905601642
+            </a>
+          </p>
+          <p>
+            Email:{' '}
+            <a href={`mailto:${seoConfig.email}`} className="hover:text-emerald-400">
+              {seoConfig.email}
+            </a>
+          </p>
           <a
             href="https://www.instagram.com/parmaacademy?igsh=MWFleW03NDRvN2l3Yg=="
             target="_blank"
@@ -49,10 +63,10 @@ function Footer() {
                 'linear-gradient(90deg, #405DE6 0%, #833AB4 25%, #C13584 50%, #FD1D1D 75%, #F58529 100%)',
             }}
           >
-            <img src={instagramIcon} alt="" className="mr-2 h-4 w-4" aria-hidden="true" />
+            <img src={instagramIcon} alt="Instagram" width="16" height="16" className="mr-2 h-4 w-4" aria-hidden="true" />
             Follow on Instagram
           </a>
-        </div>
+        </address>
       </div>
       <div className="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
         © 2026 Parma Academy. All Rights Reserved.

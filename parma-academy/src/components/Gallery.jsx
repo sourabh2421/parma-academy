@@ -32,7 +32,10 @@ function Gallery() {
                   className="h-48 w-full object-cover transition duration-300 hover:scale-105"
                   src={image}
                   alt="ICSE school in Ayodhya campus gallery"
+                  width="600"
+                  height="400"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             ))}
@@ -42,7 +45,10 @@ function Gallery() {
               className="h-56 w-full object-cover transition duration-300 hover:scale-105 sm:h-64"
               src={galleryWide}
               alt="ICSE school in Ayodhya campus highlights"
+              width="1200"
+              height="500"
               loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

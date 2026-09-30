@@ -16,9 +16,9 @@ export const WordsPullUp = ({ text, className = '', showAsterisk = false, style 
         return (
           <motion.span
             key={i}
-            initial={{ y: 20, opacity: 0 }}
-            animate={isInView ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 1 }}
+            transition={{ duration: 0.5, delay: i * 0.06 }}
             className="inline-block relative"
             style={{ marginRight: isLast ? 0 : '0.25em' }}
           >
@@ -70,12 +70,19 @@ const PrismaHero = () => {
       <div className="relative h-full min-h-[85vh] w-full overflow-hidden rounded-2xl md:rounded-[2rem]">
         
         {/* Hero Background Image */}
-        <img
-          src="/og-image.jpg"
-          alt="Parma Academy campus in Ayodhya"
-          fetchPriority="high"
-          className="absolute inset-0 h-full w-full object-cover bg-slate-950"
-        />
+        <picture>
+          <source media="(max-width: 768px)" srcSet="/og-image-mobile.webp" type="image/webp" />
+          <source srcSet="/og-image.webp" type="image/webp" />
+          <img
+            src="/og-image.jpg"
+            alt="Parma Academy campus in Ayodhya"
+            width="1536"
+            height="1024"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover bg-slate-950"
+          />
+        </picture>
 
         {/* Noise overlay */}
         <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.7] mix-blend-overlay" />

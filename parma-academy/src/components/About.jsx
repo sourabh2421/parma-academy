@@ -20,9 +20,9 @@ function About() {
           </h2>
           <p className="text-base text-slate-600">
             Established under the aegis of Narayan Dharmarth Swasth Sansthan,
-            Parma Academy is committed to academic brilliance and personality
-            development. We blend modern learning methods with timeless wisdom
-            to help every child flourish.
+            Parma Academy is a premier ICSE school in Ayodhya committed to academic brilliance
+            and character development. We blend modern ICSE learning methodologies with timeless values
+            to help every child flourish from Pre-School to Grade 12.
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {facilities.map((item) => (

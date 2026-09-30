@@ -144,7 +144,7 @@ function ContactPage() {
                     'linear-gradient(90deg, #405DE6 0%, #833AB4 25%, #C13584 50%, #FD1D1D 75%, #F58529 100%)',
                 }}
               >
-                <img src={instagramIcon} alt="" className="mr-2 h-4 w-4" aria-hidden="true" />
+                <img src={instagramIcon} alt="Instagram" width="16" height="16" className="mr-2 h-4 w-4" aria-hidden="true" />
                 Follow on Instagram
               </a>
               <a
