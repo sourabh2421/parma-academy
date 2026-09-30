@@ -63,14 +63,50 @@ function BlogPage() {
   )
 
   const featuredPost = posts[0]
+  const canonicalUrl = `${seoConfig.siteUrl}/blog`
+
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'School Blog & ICSE Education Guides | Parma Academy Ayodhya',
+    url: canonicalUrl,
+    description:
+      'Read educational insights, ICSE curriculum benefits, admission guides, and student achievements from Parma Academy, a top ICSE school in Ayodhya.',
+    publisher: {
+      '@type': ['EducationalOrganization', 'School'],
+      name: seoConfig.schoolName,
+      url: seoConfig.siteUrl,
+    },
+  }
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: seoConfig.siteUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: canonicalUrl,
+      },
+    ],
+  }
 
   return (
-    <main className="bg-slate-50 text-slate-900 min-h-screen">
+    <div className="bg-slate-50 text-slate-900 min-h-screen">
       <SEO
-        title="School Blog & ICSE Education Guides"
+        title="School Blog & ICSE Education Guides | Parma Academy Ayodhya"
         description="Read educational insights, ICSE curriculum benefits, admission guides, and student achievements from Parma Academy, a top ICSE school in Ayodhya."
-        canonicalUrl={`${seoConfig.siteUrl}/blog`}
+        canonicalUrl={canonicalUrl}
+        ogImage={`${seoConfig.siteUrl}/og-image.jpg`}
         keywords="ICSE school Ayodhya blog, Parma Academy news, Ayodhya education guides, school admissions Ayodhya"
+        schema={[blogSchema, breadcrumbSchema]}
       />
 
       <section className="mx-auto max-w-6xl px-6 pt-12 pb-6">
@@ -270,7 +306,7 @@ function BlogPage() {
           faqs={blogPageFAQs}
         />
       </section>
-    </main>
+    </div>
   )
 }
 

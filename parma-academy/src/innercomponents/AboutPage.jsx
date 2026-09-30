@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO.jsx'
 import { Link } from 'react-router-dom'
 import { seoConfig } from '../seo/seoConfig.js'
 import shriNarayanRai from '../assets/ShriNarayanRai.jpeg'
@@ -70,31 +70,44 @@ const contactCards = [
 function AboutPage() {
   const canonicalUrl = `${seoConfig.siteUrl}/about`
 
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About Parma Academy Ayodhya',
+    url: canonicalUrl,
+    description:
+      'Discover Parma Academy history, leadership, vision, and core educational values in Ayodhya, Uttar Pradesh.',
+    mainEntity: {
+      '@type': ['EducationalOrganization', 'School'],
+      name: seoConfig.schoolName,
+      url: seoConfig.siteUrl,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Parikrama Marg, Parmapuram',
+        addressLocality: 'Ayodhya',
+        addressRegion: 'Uttar Pradesh',
+        postalCode: '224123',
+        addressCountry: 'IN',
+      },
+    },
+  }
+
   return (
-    <main className="bg-slate-50 text-slate-900">
-      <Helmet>
-        <title>About Us | {seoConfig.schoolName} Ayodhya</title>
-        <meta
-          name="description"
-          content="Learn about Parma Academy, an ICSE school in Ayodhya dedicated to academic excellence, values, and holistic student development."
-        />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content={`About Us | ${seoConfig.schoolName}`} />
-        <meta
-          property="og:description"
-          content="Discover the mission and leadership of Parma Academy, an ICSE affiliated school in Ayodhya."
-        />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:type" content="website" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Helmet>
+    <div className="bg-slate-50 text-slate-900">
+      <SEO
+        title="About Us | Parma Academy - Top ICSE School in Ayodhya"
+        description="Discover Parma Academy in Ayodhya, established in 2004. Learn about our ICSE curriculum, leadership, vision, values, and holistic education approach."
+        canonicalUrl={canonicalUrl}
+        ogImage={`${seoConfig.siteUrl}/og-image.jpg`}
+        schema={aboutSchema}
+      />
       <section className="mx-auto max-w-5xl px-6 py-16">
         <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">
               About Us
             </p>
             <h1 className="mt-3 text-3xl font-semibold text-slate-900 sm:text-4xl">
-              Parma Academy
+              About Parma Academy Ayodhya
             </h1>
             <p className="mt-6 text-base text-slate-600">
               Amalgamated in the year 2004, Parma Academy, established under the
@@ -132,7 +145,7 @@ function AboutPage() {
                     <img
                       className="h-20 w-20 rounded-full border border-slate-200 bg-white object-cover"
                       src={item.image}
-                      alt={`${item.name} - ICSE school in Ayodhya leadership`}
+                      alt={`${item.name}, ${item.role} at Parma Academy Ayodhya`}
                       loading="lazy"
                     />
                   ) : (
@@ -201,7 +214,7 @@ function AboutPage() {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   )
 }
 

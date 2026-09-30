@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO.jsx'
 import { seoConfig } from '../seo/seoConfig.js'
 import shriNarayanRai from '../assets/ShriNarayanRai.jpeg'
 import sudhirRai from '../assets/SudhirRai.jpeg'
@@ -109,30 +109,35 @@ const staffGroups = [
 function StaffPage() {
   const canonicalUrl = `${seoConfig.siteUrl}/staff`
 
+  const staffSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'Faculty & Academic Leadership | Parma Academy Ayodhya',
+    url: canonicalUrl,
+    description:
+      'Meet the leadership, department heads, and certified teachers at Parma Academy in Ayodhya, Uttar Pradesh.',
+    mainEntity: {
+      '@type': ['EducationalOrganization', 'School'],
+      name: seoConfig.schoolName,
+      url: seoConfig.siteUrl,
+    },
+  }
+
   return (
-    <main className="bg-slate-50 text-slate-900">
-      <Helmet>
-        <title>Faculty & Staff | {seoConfig.schoolName} Ayodhya</title>
-        <meta
-          name="description"
-          content="Meet the leadership and faculty at Parma Academy, a trusted ICSE school in Ayodhya committed to student success."
-        />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content={`Faculty | ${seoConfig.schoolName}`} />
-        <meta
-          property="og:description"
-          content="Faculty profiles from Parma Academy, an ICSE affiliated school in Ayodhya."
-        />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:type" content="website" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Helmet>
+    <div className="bg-slate-50 text-slate-900">
+      <SEO
+        title="Faculty & Academic Leadership | Parma Academy Ayodhya"
+        description="Meet the experienced educators, department faculty, and leadership team at Parma Academy, a trusted ICSE affiliated school in Ayodhya."
+        canonicalUrl={canonicalUrl}
+        ogImage={`${seoConfig.siteUrl}/og-image.jpg`}
+        schema={staffSchema}
+      />
       <section className="mx-auto max-w-6xl px-6 py-16">
         <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">
           Our Faculty
         </p>
         <h1 className="mt-3 text-3xl font-semibold text-slate-900 sm:text-4xl">
-          Dedicated educators for every learner
+          Faculty & Academic Leadership at Parma Academy
         </h1>
         <p className="mt-4 max-w-3xl text-base text-slate-600">
           Our team brings expertise, care, and enthusiasm to every classroom.
@@ -166,7 +171,7 @@ function StaffPage() {
                       <img
                         className="h-12 w-12 rounded-full border border-slate-200 bg-white object-cover"
                         src={member.image}
-                        alt={`${member.name} - ICSE school in Ayodhya leadership`}
+                        alt={`${member.name} - Parma Academy faculty in Ayodhya`}
                         loading="lazy"
                       />
                     ) : null}
@@ -183,7 +188,7 @@ function StaffPage() {
           ))}
         </div>
       </section>
-    </main>
+    </div>
   )
 }
 

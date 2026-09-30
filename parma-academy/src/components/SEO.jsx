@@ -14,12 +14,14 @@ export default function SEO({
   author,
 }) {
   const fullTitle = title
-    ? `${title} | ${seoConfig.schoolName} Ayodhya`
+    ? title.includes(seoConfig.schoolName)
+      ? title
+      : `${title} | ${seoConfig.schoolName} Ayodhya`
     : `${seoConfig.schoolName} | Best ICSE School in Ayodhya`
 
   const metaDesc =
     description ||
-    'Parma Academy is a premier ICSE school in Ayodhya, Uttar Pradesh, offering quality academics, sports, modern infrastructure, and holistic development.'
+    'Parma Academy is a premier ICSE school in Ayodhya, Uttar Pradesh, offering quality academics, modern science & computer labs, sports coaching, and holistic development.'
 
   const url = canonicalUrl || seoConfig.siteUrl
   const image = ogImage || `${seoConfig.siteUrl}/og-image.jpg`

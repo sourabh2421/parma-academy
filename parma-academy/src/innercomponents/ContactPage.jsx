@@ -36,14 +36,34 @@ function ContactPage() {
     ],
   }
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: seoConfig.siteUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Contact',
+        item: canonicalUrl,
+      },
+    ],
+  }
+
   return (
-    <main className="bg-slate-50 text-slate-900 min-h-screen">
+    <div className="bg-slate-50 text-slate-900 min-h-screen">
       <SEO
-        title="Contact Us & Campus Location"
+        title="Contact Us & Campus Location | Parma Academy Ayodhya"
         description="Contact Parma Academy in Ayodhya. Visit our campus on Parikrama Marg or call +91 7007178570 for school admissions, fees, and campus tour bookings."
         canonicalUrl={canonicalUrl}
+        ogImage={`${seoConfig.siteUrl}/og-image.jpg`}
         keywords="Parma Academy contact number, Parma Academy address, school in Ayodhya address, ICSE school Ayodhya phone"
-        schema={contactSchema}
+        schema={[contactSchema, breadcrumbSchema]}
       />
 
       <section className="mx-auto max-w-6xl px-6 py-12">
@@ -159,7 +179,7 @@ function ContactPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   )
 }
 

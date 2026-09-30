@@ -69,14 +69,12 @@ const PrismaHero = () => {
     <section className="relative min-h-[90vh] w-full p-2 sm:p-4 md:p-6">
       <div className="relative h-full min-h-[85vh] w-full overflow-hidden rounded-2xl md:rounded-[2rem]">
         
-        {/* Background video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
+        {/* Hero Background Image */}
+        <img
+          src="/og-image.jpg"
+          alt="Parma Academy campus in Ayodhya"
+          fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover bg-slate-950"
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4"
         />
 
         {/* Noise overlay */}
@@ -85,11 +83,7 @@ const PrismaHero = () => {
         {/* Gradient overlay */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80" />
 
-        {/* Floating Quick Badge */}
-        <div className="absolute left-6 top-6 z-20 hidden items-center gap-2 rounded-full bg-black/40 backdrop-blur-md px-4 py-2 text-xs font-medium text-emerald-400 border border-emerald-500/30 sm:flex">
-          <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-          ICSE Affiliated • Ayodhya since 2004
-        </div>
+
 
         {/* Hero content */}
         <div className="absolute bottom-0 left-0 right-0 px-4 pb-6 sm:px-8 md:px-12 md:pb-12 z-20">

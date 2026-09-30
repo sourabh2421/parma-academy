@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO.jsx'
 import { seoConfig } from '../seo/seoConfig.js'
 import admissionContest from '../assets/Admissioncontest.jpeg'
 import holi2025 from '../assets/Holi2025-1.jpeg'
@@ -88,30 +88,35 @@ const events = [
 function EventsPage() {
   const canonicalUrl = `${seoConfig.siteUrl}/events`
 
+  const eventsSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'School Events & Campus Life | Parma Academy Ayodhya',
+    url: canonicalUrl,
+    description:
+      'Explore recent events, festivals, educational tours, and cultural celebrations at Parma Academy in Ayodhya.',
+    mainEntity: {
+      '@type': ['EducationalOrganization', 'School'],
+      name: seoConfig.schoolName,
+      url: seoConfig.siteUrl,
+    },
+  }
+
   return (
-    <main className="bg-slate-50 text-slate-900">
-      <Helmet>
-        <title>Events | {seoConfig.schoolName} Ayodhya</title>
-        <meta
-          name="description"
-          content="Explore recent events and celebrations at Parma Academy, a leading ICSE school in Ayodhya. Discover campus life and student achievements."
-        />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content={`Events | ${seoConfig.schoolName}`} />
-        <meta
-          property="og:description"
-          content="Event highlights from Parma Academy, an ICSE affiliated school in Ayodhya."
-        />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:type" content="website" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Helmet>
+    <div className="bg-slate-50 text-slate-900">
+      <SEO
+        title="School Events & Campus Life | Parma Academy Ayodhya"
+        description="Explore recent student celebrations, educational tours, Independence Day, sports, and cultural festivals at Parma Academy, a leading ICSE school in Ayodhya."
+        canonicalUrl={canonicalUrl}
+        ogImage={`${seoConfig.siteUrl}/og-image.jpg`}
+        schema={eventsSchema}
+      />
       <section className="mx-auto max-w-6xl px-6 py-16">
         <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">
           Events
         </p>
         <h1 className="mt-3 text-3xl font-semibold text-slate-900 sm:text-4xl">
-          Campus celebrations and milestones
+          Campus Celebrations & Events at Parma Academy
         </h1>
         <p className="mt-4 max-w-3xl text-base text-slate-600">
           Our annual calendar highlights cultural festivals, national
@@ -155,7 +160,7 @@ function EventsPage() {
                       <img
                         className="h-40 w-full object-cover transition duration-300 hover:scale-105 sm:h-44"
                         src={image}
-                        alt={`${event.title} at ICSE school in Ayodhya`}
+                        alt={`${event.title} - student celebration at Parma Academy Ayodhya`}
                         loading="lazy"
                       />
                     </div>
@@ -166,7 +171,7 @@ function EventsPage() {
           ))}
         </div>
       </section>
-    </main>
+    </div>
   )
 }
 

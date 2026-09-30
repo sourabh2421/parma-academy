@@ -3,14 +3,12 @@ import Hero from '../components/Hero.jsx'
 import News from '../components/News.jsx'
 import About from '../components/About.jsx'
 import Events from '../components/Events.jsx'
-import Community from '../components/Community.jsx'
 import Infrastructure from '../components/Infrastructure.jsx'
 import Gallery from '../components/Gallery.jsx'
 import Leadership from '../components/Leadership.jsx'
 import Inquiry from '../components/Inquiry.jsx'
 import BlogPreview from '../components/BlogPreview.jsx'
 import FAQAccordion from '../components/ui/FAQAccordion.jsx'
-import heroImage from '../assets/Heroimageparmaacademy.jpeg'
 import { seoConfig } from '../seo/seoConfig.js'
 
 const homeFAQs = [
@@ -38,7 +36,7 @@ const homeFAQs = [
 
 function HomePage() {
   const canonicalUrl = `${seoConfig.siteUrl}/icse-school-in-ayodhya`
-  const ogImage = `${seoConfig.siteUrl}${heroImage}`
+  const ogImage = `${seoConfig.siteUrl}/og-image.jpg`
 
   const educationalOrgSchema = {
     '@context': 'https://schema.org',
@@ -82,6 +80,7 @@ function HomePage() {
           content="Parma Academy is a leading ICSE school in Ayodhya offering quality education, modern facilities, experienced faculty, and holistic development for every student."
         />
         <link rel="canonical" href={canonicalUrl} />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta
           property="og:title"
           content={`Best ICSE School in Ayodhya | ${seoConfig.schoolName}`}
@@ -104,7 +103,6 @@ function HomePage() {
       <News />
       <About />
       <Events />
-      <Community />
       <Infrastructure />
       <Gallery />
       <Leadership />

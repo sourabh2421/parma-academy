@@ -2,6 +2,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import { rawBlogPosts } from '../src/data/blogPostsData.js'
+
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const rootDir = path.resolve(__dirname, '..')
@@ -28,24 +30,9 @@ const staticRoutes = [
 async function generateSitemap() {
   console.log('Generating dynamic XML sitemap...')
 
-  // Import blog posts
-  const blogPostsFile = path.resolve(rootDir, 'src/data/blogPosts.js')
-  let blogSlugs = [
-    'why-choose-icse-school-in-ayodhya',
-    'icse-vs-cbse-board-school-ayodhya',
-    'parma-academy-admission-guide-ayodhya',
-    'student-life-co-curriculars-parma-academy-ayodhya',
-  ]
-
-  try {
-    const fileContent = fs.readFileSync(blogPostsFile, 'utf8')
-    const matchSlugs = [...fileContent.matchAll(/slug:\s*['"]([^'"]+)['"]/g)].map((m) => m[1])
-    if (matchSlugs.length > 0) {
-      blogSlugs = Array.from(new Set(matchSlugs))
-    }
-  } catch (err) {
-    console.warn('Could not parse blog posts file, using default slugs:', err.message)
-  }
+  const blogSlugs = (rawBlogPosts || [])
+    .map((post) => post.slug)
+    .filter(Boolean)
 
   const urls = [
     ...staticRoutes.map((route) => `  <url>

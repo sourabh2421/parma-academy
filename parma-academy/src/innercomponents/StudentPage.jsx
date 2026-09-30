@@ -1,32 +1,37 @@
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO.jsx'
 import { seoConfig } from '../seo/seoConfig.js'
 
 function StudentPage() {
   const canonicalUrl = `${seoConfig.siteUrl}/student`
 
+  const studentSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Student Life & Co-Curriculars | Parma Academy Ayodhya',
+    url: canonicalUrl,
+    description:
+      'Discover holistic student life at Parma Academy in Ayodhya, including sports coaching, academic mentoring, clubs, arts, and leadership activities.',
+    mainEntity: {
+      '@type': ['EducationalOrganization', 'School'],
+      name: seoConfig.schoolName,
+      url: seoConfig.siteUrl,
+    },
+  }
+
   return (
     <section className="mx-auto max-w-4xl px-6 py-16">
-      <Helmet>
-        <title>Student Life | {seoConfig.schoolName} Ayodhya</title>
-        <meta
-          name="description"
-          content="Student life at Parma Academy, an ICSE school in Ayodhya, includes clubs, sports, mentoring, and holistic development."
-        />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content={`Student Life | ${seoConfig.schoolName}`} />
-        <meta
-          property="og:description"
-          content="Student life at Parma Academy, an ICSE affiliated school in Ayodhya."
-        />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:type" content="website" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Helmet>
+      <SEO
+        title="Student Life & Co-Curriculars | Parma Academy Ayodhya"
+        description="Student life at Parma Academy, a premier ICSE school in Ayodhya, features clubs, sports coaching, student council, cultural arts, and dedicated mentoring."
+        canonicalUrl={canonicalUrl}
+        ogImage={`${seoConfig.siteUrl}/og-image.jpg`}
+        schema={studentSchema}
+      />
       <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">
         Student
       </p>
       <h1 className="mt-3 text-3xl font-semibold text-slate-900">
-        Student life at Parma Academy
+        Student Life & Holistic Development at Parma Academy
       </h1>
       <p className="mt-6 text-base text-slate-600">
         Our students grow through academics, clubs, sports, and mentorship

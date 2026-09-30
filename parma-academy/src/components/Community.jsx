@@ -18,8 +18,9 @@ function Community() {
             Counseling, clubs, and mentorship for holistic growth.
           </p>
           <Link
-            to="/contact-ayodhya"
+            to="/student"
             className="mt-4 inline-flex text-sm font-semibold text-emerald-700 hover:text-emerald-800"
+            aria-label="Learn more about student life at Parma Academy"
           >
             Learn more →
           </Link>
@@ -40,6 +41,7 @@ function Community() {
           <Link
             to="/employee"
             className="mt-4 inline-flex text-sm font-semibold text-emerald-700 hover:text-emerald-800"
+            aria-label="Learn more about careers and employee opportunities at Parma Academy"
           >
             Learn more →
           </Link>
@@ -60,8 +62,9 @@ function Community() {
           <Link
             to="/staff"
             className="mt-4 inline-flex text-sm font-semibold text-emerald-700 hover:text-emerald-800"
+            aria-label="View Parma Academy faculty and staff directory"
           >
-            Meet our leaders →
+            Meet our educators →
           </Link>
         </div>
       </div>

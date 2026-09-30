@@ -38,19 +38,19 @@ function BlogPostPage() {
 
   if (loading) {
     return (
-      <main className="bg-slate-50 min-h-screen py-20">
+      <div className="bg-slate-50 min-h-screen py-20">
         <div className="mx-auto max-w-4xl px-6 animate-pulse space-y-6">
           <div className="h-6 w-32 rounded bg-slate-200" />
           <div className="h-10 w-3/4 rounded bg-slate-200" />
           <div className="h-64 rounded-3xl bg-slate-200" />
         </div>
-      </main>
+      </div>
     )
   }
 
   if (!post) {
     return (
-      <main className="bg-slate-50 min-h-screen py-20 text-center">
+      <div className="bg-slate-50 min-h-screen py-20 text-center">
         <div className="mx-auto max-w-2xl px-6">
           <h1 className="text-3xl font-bold text-slate-900">Article Not Found</h1>
           <p className="mt-4 text-slate-600">
@@ -63,7 +63,7 @@ function BlogPostPage() {
             ← Back to Blog
           </Link>
         </div>
-      </main>
+      </div>
     )
   }
 
@@ -100,8 +100,33 @@ function BlogPostPage() {
     articleSection: post.category,
   }
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: seoConfig.siteUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: `${seoConfig.siteUrl}/blog`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: canonicalUrl,
+      },
+    ],
+  }
+
   return (
-    <main className="bg-slate-50 text-slate-900 min-h-screen">
+    <div className="bg-slate-50 text-slate-900 min-h-screen">
       <SEO
         title={post.metaTitle || post.title}
         description={post.metaDescription || post.excerpt}
@@ -112,7 +137,7 @@ function BlogPostPage() {
         modifiedTime={post.updatedAt}
         author={post.author?.name}
         keywords={post.focusKeyword || post.tags?.join(', ')}
-        schema={articleSchema}
+        schema={[articleSchema, breadcrumbSchema]}
       />
 
       <article className="mx-auto max-w-4xl px-6 pt-12 pb-16">
@@ -301,7 +326,7 @@ function BlogPostPage() {
           </section>
         )}
       </article>
-    </main>
+    </div>
   )
 }
 

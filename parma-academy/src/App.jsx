@@ -1,20 +1,22 @@
-import { useEffect, useState } from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { useEffect, useState, lazy, Suspense } from 'react'
+import { Route, Routes, Navigate } from 'react-router-dom'
 import whatsappIcon from './assets/whatsapp.svg'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
-import HomePage from './innercomponents/HomePage.jsx'
-import AboutPage from './innercomponents/AboutPage.jsx'
-import EventsPage from './innercomponents/EventsPage.jsx'
-import AdmissionPage from './innercomponents/AdmissionPage.jsx'
-import StudentPage from './innercomponents/StudentPage.jsx'
-import EmployeePage from './innercomponents/EmployeePage.jsx'
-import StaffPage from './innercomponents/StaffPage.jsx'
-import ContactPage from './innercomponents/ContactPage.jsx'
-import GalleryPage from './innercomponents/GalleryPage.jsx'
-import FacilitiesPage from './innercomponents/FacilitiesPage.jsx'
-import BlogPage from './innercomponents/BlogPage.jsx'
-import BlogPostPage from './innercomponents/BlogPostPage.jsx'
+import { Agentation } from 'agentation'
+
+const HomePage = lazy(() => import('./innercomponents/HomePage.jsx'))
+const AboutPage = lazy(() => import('./innercomponents/AboutPage.jsx'))
+const EventsPage = lazy(() => import('./innercomponents/EventsPage.jsx'))
+const AdmissionPage = lazy(() => import('./innercomponents/AdmissionPage.jsx'))
+const StudentPage = lazy(() => import('./innercomponents/StudentPage.jsx'))
+const EmployeePage = lazy(() => import('./innercomponents/EmployeePage.jsx'))
+const StaffPage = lazy(() => import('./innercomponents/StaffPage.jsx'))
+const ContactPage = lazy(() => import('./innercomponents/ContactPage.jsx'))
+const GalleryPage = lazy(() => import('./innercomponents/GalleryPage.jsx'))
+const FacilitiesPage = lazy(() => import('./innercomponents/FacilitiesPage.jsx'))
+const BlogPage = lazy(() => import('./innercomponents/BlogPage.jsx'))
+const BlogPostPage = lazy(() => import('./innercomponents/BlogPostPage.jsx'))
 
 const getInitialTheme = () => {
   if (typeof window === 'undefined') return false
@@ -41,22 +43,24 @@ function App() {
     <div className="bg-slate-50 text-slate-900">
       <Header />
       <main>
-        <Routes>
-          <Route path="/" element={<Navigate to="/icse-school-in-ayodhya" replace />} />
-          <Route path="/icse-school-in-ayodhya" element={<HomePage />} />
-          <Route path="/admission-ayodhya" element={<AdmissionPage />} />
-          <Route path="/facilities" element={<FacilitiesPage />} />
-          <Route path="/contact-ayodhya" element={<ContactPage />} />
-          <Route path="/events" element={<EventsPage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/staff" element={<StaffPage />} />
-          <Route path="/student" element={<StudentPage />} />
-          <Route path="/employee" element={<EmployeePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="*" element={<Navigate to="/icse-school-in-ayodhya" replace />} />
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/icse-school-in-ayodhya" element={<HomePage />} />
+            <Route path="/admission-ayodhya" element={<AdmissionPage />} />
+            <Route path="/facilities" element={<FacilitiesPage />} />
+            <Route path="/contact-ayodhya" element={<ContactPage />} />
+            <Route path="/events" element={<EventsPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/staff" element={<StaffPage />} />
+            <Route path="/student" element={<StudentPage />} />
+            <Route path="/employee" element={<EmployeePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path="*" element={<Navigate to="/icse-school-in-ayodhya" replace />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
       <a
@@ -77,6 +81,7 @@ function App() {
         <span className="text-base">{isDark ? '☀️' : '🌙'}</span>
         {isDark ? 'Light mode' : 'Dark mode'}
       </button>
+      {process.env.NODE_ENV === 'development' && <Agentation />}
     </div>
   )
 }

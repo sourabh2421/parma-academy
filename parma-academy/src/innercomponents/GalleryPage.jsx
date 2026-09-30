@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO.jsx'
 import { seoConfig } from '../seo/seoConfig.js'
 import galleryOne from '../assets/Gallery1.avif'
 import galleryTwo from '../assets/Gallery2.avif'
@@ -32,30 +32,35 @@ const galleryImages = [
 function GalleryPage() {
   const canonicalUrl = `${seoConfig.siteUrl}/gallery`
 
+  const gallerySchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ImageGallery',
+    name: 'Campus Moments & Photo Gallery | Parma Academy Ayodhya',
+    url: canonicalUrl,
+    description:
+      'Campus life, student activities, sports, cultural events, and celebrations at Parma Academy in Ayodhya.',
+    publisher: {
+      '@type': ['EducationalOrganization', 'School'],
+      name: seoConfig.schoolName,
+      url: seoConfig.siteUrl,
+    },
+  }
+
   return (
-    <main className="bg-slate-50 text-slate-900">
-      <Helmet>
-        <title>Gallery | {seoConfig.schoolName} Ayodhya</title>
-        <meta
-          name="description"
-          content="View campus life and celebrations at Parma Academy, a leading ICSE school in Ayodhya."
-        />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content={`Gallery | ${seoConfig.schoolName}`} />
-        <meta
-          property="og:description"
-          content="Gallery highlights from Parma Academy, an ICSE affiliated school in Ayodhya."
-        />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:type" content="website" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Helmet>
+    <div className="bg-slate-50 text-slate-900">
+      <SEO
+        title="Campus Photo Gallery | Parma Academy Ayodhya"
+        description="Explore Parma Academy campus life, modern infrastructure, student achievements, and cultural celebrations in Ayodhya through our official photo gallery."
+        canonicalUrl={canonicalUrl}
+        ogImage={`${seoConfig.siteUrl}/og-image.jpg`}
+        schema={gallerySchema}
+      />
       <section className="mx-auto max-w-6xl px-6 py-16">
         <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">
           Gallery
         </p>
         <h1 className="mt-3 text-3xl font-semibold text-slate-900 sm:text-4xl">
-          Campus moments and celebrations
+          Parma Academy Campus Photo Gallery
         </h1>
         <p className="mt-4 max-w-3xl text-base text-slate-600">
           Explore campus life, events, and achievements. Share your gallery
@@ -70,7 +75,7 @@ function GalleryPage() {
               <img
                 className="h-56 w-full object-cover transition duration-300 hover:scale-105 sm:h-60"
                 src={image}
-                alt="ICSE school in Ayodhya campus gallery"
+                alt={`Parma Academy campus moments in Ayodhya - photo ${index + 1}`}
                 loading="lazy"
               />
             </div>
@@ -79,7 +84,7 @@ function GalleryPage() {
             <img
               className="h-64 w-full object-cover transition duration-300 hover:scale-105 sm:h-72 lg:h-80"
               src={galleryWide}
-              alt="ICSE school in Ayodhya campus panorama"
+              alt="Parma Academy panoramic campus view in Ayodhya"
               loading="lazy"
             />
           </div>
@@ -88,13 +93,14 @@ function GalleryPage() {
               <img
                 className="h-56 w-full object-cover transition duration-300 hover:scale-105 sm:h-60"
                 src={image}
-                alt="Gallery highlight"
+                alt={`Parma Academy campus activities and student life in Ayodhya - photo ${index + 7}`}
+                loading="lazy"
               />
             </div>
           ))}
         </div>
       </section>
-    </main>
+    </div>
   )
 }
 

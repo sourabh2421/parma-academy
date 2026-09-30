@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO.jsx'
 import emailjs from '@emailjs/browser'
 import { seoConfig } from '../seo/seoConfig.js'
 
@@ -7,6 +7,22 @@ function AdmissionPage() {
   const form = useRef()
   const [submitting, setSubmitting] = useState(false)
   const canonicalUrl = `${seoConfig.siteUrl}/admission-ayodhya`
+
+  const admissionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'School Admissions | Parma Academy Ayodhya',
+    url: canonicalUrl,
+    description:
+      'Apply to Parma Academy, a premier ICSE school in Ayodhya. Submit the online admission form for Pre-School to Grade 12.',
+    mainEntity: {
+      '@type': ['EducationalOrganization', 'School'],
+      name: seoConfig.schoolName,
+      url: seoConfig.siteUrl,
+      telephone: seoConfig.phone,
+      email: seoConfig.email,
+    },
+  }
 
   const sendEmail = (e) => {
     e.preventDefault()
@@ -44,29 +60,20 @@ function AdmissionPage() {
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-16">
-      <Helmet>
-        <title>Admissions | {seoConfig.schoolName} Ayodhya</title>
-        <meta
-          name="description"
-          content="Apply to Parma Academy, a top ICSE school in Ayodhya. Submit the admission form to start your child's learning journey."
-        />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content={`Admissions | ${seoConfig.schoolName}`} />
-        <meta
-          property="og:description"
-          content="Admissions open at Parma Academy, an ICSE affiliated school in Ayodhya."
-        />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:type" content="website" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Helmet>
+      <SEO
+        title="School Admissions 2026-27 | Parma Academy Ayodhya"
+        description="Apply to Parma Academy, a premier ICSE school in Ayodhya for session 2026-27. Admissions open from Pre-School to Grade 12. Submit the online application form today."
+        canonicalUrl={canonicalUrl}
+        ogImage={`${seoConfig.siteUrl}/og-image.jpg`}
+        schema={admissionSchema}
+      />
       <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
           <p className="text-sm font-semibold uppercase tracking-widest text-emerald-600">
             Admission
           </p>
           <h1 className="mt-3 text-3xl font-semibold text-slate-900">
-            Start your admission journey
+            Start Your Admission Journey at Parma Academy
           </h1>
           <p className="mt-6 text-base text-slate-600">
             Admissions are open from pre-school to grade 12. Our team guides
