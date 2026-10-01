@@ -4,6 +4,7 @@ import whatsappIcon from './assets/whatsapp.svg'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import { Agentation } from 'agentation'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 
 const HomePage = lazy(() => import('./innercomponents/HomePage.jsx'))
 const AboutPage = lazy(() => import('./innercomponents/AboutPage.jsx'))
@@ -82,6 +83,7 @@ function App() {
         {isDark ? 'Light mode' : 'Dark mode'}
       </button>
       {process.env.NODE_ENV === 'development' && <Agentation />}
+      <SpeedInsights />
     </div>
   )
 }
